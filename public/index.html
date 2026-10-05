@@ -196,73 +196,42 @@ body.intro-mode #intro:before{content:"";position:absolute;inset:0;pointer-event
 body.intro-mode .intro-top,body.intro-mode .globe-title,body.intro-mode .globe-controls,body.intro-mode .intro-card,body.intro-mode .intro-foot,body.intro-mode .globe-country-popover,body.intro-mode .globe-detail-hint,body.intro-mode .globe-conflict-links,body.intro-mode .space-policy-links,body.intro-mode .space-asset{display:none!important}
 body.intro-mode .intro-layout{display:block;min-height:0;width:min(78vw,850px);max-width:none;margin:0;position:relative;z-index:2}
 body.intro-mode .globe-wrap{margin:0!important;display:grid;place-items:center}
-body.intro-mode .globe-button{cursor:pointer!important;text-decoration:none;color:inherit;position:relative;width:min(74vw,760px);aspect-ratio:1;border-radius:50%;overflow:visible;filter:drop-shadow(0 0 32px rgba(71,137,197,.18));cursor:pointer;touch-action:manipulation}
-body.intro-mode .globe-button:active{cursor:pointer}
-body.intro-mode #globe{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-/* v57 — centered cinematic Earth */
-body.intro-mode{background:#000;overflow:hidden}
-body.intro-mode .header{
-  position:fixed;inset:0 0 auto 0;z-index:80;
-  min-height:0;padding:26px 24px 0;
-  display:flex;justify-content:center;align-items:flex-start;
-  border:0;background:linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.08) 62%,transparent);
-  pointer-events:none
-}
-body.intro-mode .header .brand{
-  width:auto;display:inline-flex;flex-direction:column;align-items:center;gap:2px;
-  pointer-events:auto;filter:none;color:#f7fbff;text-align:center
-}
-body.intro-mode .header .brand svg{width:112px;height:61px;overflow:visible}
-body.intro-mode .header .brand svg text{
-  font-family:Inter,"Helvetica Neue",Arial,sans-serif!important;
-  font-size:64px!important;font-weight:400!important;letter-spacing:-3.8px;fill:#f8fbff
-}
-body.intro-mode .header .brand-sub{
-  margin-top:0;font-family:Inter,"Helvetica Neue",Arial,sans-serif;
-  font-size:12px;font-weight:400;letter-spacing:.12em;line-height:1.35;
-  color:rgba(241,247,255,.84);text-shadow:0 2px 14px rgba(0,0,0,.55);white-space:nowrap
-}
-body.intro-mode .header .account{display:none!important}
-body.intro-mode #intro{
-  height:100svh;min-height:100svh;padding:0;overflow:hidden;position:relative;
-  background:
-    radial-gradient(circle at 50% 52%,rgba(41,104,177,.13),transparent 30%),
-    radial-gradient(circle at 22% 34%,rgba(55,91,135,.055),transparent 24%),
-    linear-gradient(180deg,#01040a 0%,#020812 47%,#01040a 100%)
-}
-body.intro-mode #intro:before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 52%,transparent 0 38%,rgba(0,0,0,.10) 58%,rgba(0,0,0,.52) 100%)
-}
-body.intro-mode .intro-top,
-body.intro-mode .globe-title,
-body.intro-mode .globe-controls,
-body.intro-mode .intro-card,
-body.intro-mode .intro-foot,
-body.intro-mode .globe-country-popover,
-body.intro-mode .globe-detail-hint,
-body.intro-mode .globe-conflict-links,
-body.intro-mode .space-policy-links,
-body.intro-mode .space-asset{display:none!important}
-body.intro-mode .intro-layout{
-  display:block;width:100vw;height:100svh;min-height:100svh;margin:0;max-width:none;
-  position:relative;z-index:2
-}
-body.intro-mode .globe-wrap{width:100%;height:100%;margin:0!important;display:block;cursor:pointer}
-body.intro-mode .globe-button{
-  position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0;
-  padding:0;margin:0;background:transparent;overflow:hidden;filter:none;
-  cursor:grab;touch-action:manipulation
-}
+body.intro-mode .globe-button{position:relative;width:min(74vw,760px);aspect-ratio:1;border-radius:50%;overflow:visible;filter:drop-shadow(0 0 32px rgba(71,137,197,.18));cursor:grab;touch-action:manipulation}
 body.intro-mode .globe-button:active{cursor:grabbing}
+body.intro-mode #globe{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.satellite-earth{position:relative;display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;background-color:#04101b;background-image:url('https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57730/land_ocean_ice_2048.jpg');background-repeat:repeat-x;background-size:auto 100%;background-position:0 50%;box-shadow:inset -86px -36px 120px rgba(0,0,0,.82),inset 28px 16px 48px rgba(123,184,224,.11),0 0 3px 1px rgba(177,219,255,.8),0 0 42px 5px rgba(70,147,207,.22);animation:earthRotation 82s linear infinite;will-change:background-position}
+.satellite-earth:before{content:"";position:absolute;inset:-1%;border-radius:50%;background:radial-gradient(circle at 34% 27%,rgba(255,255,255,.10),transparent 24%),linear-gradient(112deg,rgba(255,255,255,.035),transparent 38%);mix-blend-mode:screen;pointer-events:none}
+.satellite-earth:after{content:"";position:absolute;inset:-1%;border-radius:50%;background:radial-gradient(circle at 31% 31%,transparent 0 47%,rgba(0,0,0,.10) 59%,rgba(0,0,0,.58) 81%,rgba(0,0,0,.92) 100%);pointer-events:none}
+.earth-atmosphere{position:absolute;inset:-1.6%;border:1px solid rgba(168,220,255,.38);border-radius:50%;box-shadow:0 0 10px rgba(131,202,255,.25),0 0 38px rgba(65,145,209,.18);z-index:4;pointer-events:none}
+@keyframes earthRotation{from{background-position-x:0}to{background-position-x:-2048px}}
+@media(max-width:700px){body.intro-mode .header{padding:18px 20px}body.intro-mode .header .brand{width:270px}body.intro-mode .header .brand svg{height:44px}body.intro-mode .intro-layout{width:94vw}body.intro-mode .globe-button{width:92vw}.satellite-earth{animation-duration:96s;box-shadow:inset -48px -18px 75px rgba(0,0,0,.84),0 0 3px 1px rgba(177,219,255,.75),0 0 28px 4px rgba(70,147,207,.18)}}
+@media(prefers-reduced-motion:reduce){.satellite-earth{animation:none}}
+
+
+/* v56 — cinematic close-up Earth */
+body.intro-mode{background:#000;overflow:hidden}
+body.intro-mode .header{position:fixed;inset:0 0 auto 0;z-index:80;padding:34px 30px;background:linear-gradient(180deg,rgba(0,0,0,.30),transparent 78%);pointer-events:none}
+body.intro-mode .header .brand{width:auto;display:inline-flex;flex-direction:column;align-items:flex-start;gap:7px;pointer-events:auto;filter:none;color:#f5f8fc}
+body.intro-mode .header .brand svg{width:126px;height:68px;overflow:visible}
+body.intro-mode .header .brand svg text{font-family:Inter,"Helvetica Neue",Arial,sans-serif!important;font-size:66px!important;font-weight:500!important;letter-spacing:-4.4px;fill:#f7fbff}
+body.intro-mode .header .brand-sub{font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-size:13px;font-weight:500;letter-spacing:.045em;line-height:1.45;color:rgba(243,248,255,.90);text-shadow:0 2px 10px rgba(0,0,0,.30)}
+body.intro-mode .header .account{display:none!important}
+body.intro-mode #intro{height:100svh;min-height:100svh;padding:0;overflow:hidden;position:relative;background:radial-gradient(circle at 78% 44%,rgba(46,105,190,.11),transparent 21%),radial-gradient(circle at 18% 16%,rgba(170,205,255,.045),transparent 16%),linear-gradient(180deg,#01030a 0%,#01060d 44%,#000 100%)}
+body.intro-mode #intro:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 60% 48%,transparent 0 31%,rgba(0,0,0,.12) 49%,rgba(0,0,0,.46) 78%,rgba(0,0,0,.73) 100%)}
+body.intro-mode .intro-top,body.intro-mode .globe-title,body.intro-mode .globe-controls,body.intro-mode .intro-card,body.intro-mode .intro-foot,body.intro-mode .globe-country-popover,body.intro-mode .globe-detail-hint,body.intro-mode .globe-conflict-links,body.intro-mode .space-policy-links,body.intro-mode .space-asset{display:none!important}
+body.intro-mode .intro-layout{display:block;width:100vw;height:100svh;min-height:100svh;margin:0;max-width:none;position:relative;z-index:2}
+body.intro-mode .globe-wrap{width:100%;height:100%;margin:0!important;display:block}
+body.intro-mode .globe-button{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0;padding:0;margin:0;background:transparent;overflow:hidden;filter:none;cursor:default;touch-action:manipulation}
 body.intro-mode .globe-button:focus{outline:none}
-#earth-3d{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;opacity:1}
+body.intro-mode .satellite-earth{position:absolute;inset:0;display:block;width:100%;height:100%;border-radius:0;opacity:1;background:radial-gradient(circle at 72% 42%,rgba(100,190,255,.12),transparent 18%),linear-gradient(180deg,#01030a 0%,#020812 45%,#000 100%);transition:opacity .8s ease}
+body.intro-mode .satellite-earth:before{content:"";position:absolute;inset:-5% -18% -12% 39%;border-radius:50%;background:url('https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57730/land_ocean_ice_2048.jpg') center/cover no-repeat;box-shadow:0 0 22px rgba(134,214,255,.26),0 0 90px rgba(61,132,255,.12);filter:saturate(.94) contrast(1.06);transform:rotate(-20deg)}
+body.intro-mode .satellite-earth:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 77% 44%,transparent 0 27%,rgba(0,0,0,.10) 42%,rgba(0,0,0,.58) 76%,rgba(0,0,0,.86) 100%)}
+body.intro-mode .earth-atmosphere{display:none!important}
+#earth-3d{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;opacity:0;transition:opacity .9s ease}
+body.earth-webgl-ready #earth-3d{opacity:1}
+body.earth-webgl-ready .satellite-earth{opacity:0}
 body.intro-mode #globe{display:none!important}
-body.intro-mode #earth-3d{pointer-events:none!important}@media(max-width:700px){
-  body.intro-mode .header{padding:22px 16px 0}
-  body.intro-mode .header .brand svg{width:102px;height:55px}
-  body.intro-mode .header .brand svg text{font-size:57px!important;letter-spacing:-3.2px}
-  body.intro-mode .header .brand-sub{font-size:10px;letter-spacing:.10em;white-space:normal}}
+@media(max-width:700px){body.intro-mode .header{padding:26px 22px}body.intro-mode .header .brand svg{width:104px;height:58px}body.intro-mode .header .brand svg text{font-size:58px!important;letter-spacing:-3.5px}body.intro-mode .header .brand-sub{font-size:11px;line-height:1.5;max-width:82vw;white-space:normal}body.intro-mode .satellite-earth:before{inset:0 -42% -4% 18%;transform:rotate(-17deg)}}
 @media(prefers-reduced-motion:reduce){#earth-3d{transition:none}}
 </style>
 <meta name="robots" content="index, follow">
@@ -272,9 +241,9 @@ body.intro-mode #earth-3d{pointer-events:none!important}@media(max-width:700px){
 <meta property="og:description" content="국가별 경제지도와 금리·환율·물가·유가 공식 통계">
 <meta property="og:url" content="https://three-e-global-economy.ejeon18.chatgpt.site/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"3E","alternateName":"Efficiency, Effectiveness, Economy","url":"https://three-e-global-economy.ejeon18.chatgpt.site/","inLanguage":"ko"}</script>
-</head><body class="intro-mode">
-<header class="header"><a class="brand" href="#intro" aria-label="3E 첫 화면"><svg viewBox="0 0 170 65" aria-hidden="true"><text x="85" y="53" text-anchor="middle" fill="currentColor" font-family="Arial,sans-serif" font-size="62" font-weight="500">3E</text></svg><span class="brand-sub">Efficiency, Effectiveness, Economy</span></a><div class="account"><button data-auth="login">로그인</button><button class="primary" data-auth="signup">회원가입</button></div></header>
-<section id="intro" class="intro"><div class="intro-top"><span class="eyebrow">GLOBAL ECONOMIC ATLAS / 02</span><span class="badge">105 COUNTRIES · INDUSTRY NETWORK</span></div><div class="intro-layout"><div class="globe-wrap"><div class="globe-title"><h1>세계의 흐름을,<br>한눈에.</h1><p>지구를 클릭하면 세계지도로 이동합니다</p></div><a id="globe-open" class="globe-button" href="#map" aria-label="회전하는 지구. 클릭하면 세계지도를 엽니다"><canvas id="earth-3d" aria-hidden="true"></canvas><svg id="globe" viewBox="0 0 760 710" aria-hidden="true"><defs><radialGradient id="ocean" cx="32%" cy="28%"><stop offset="0" stop-color="#182f49"/><stop offset=".7" stop-color="#091322"/><stop offset="1" stop-color="#02060b"/></radialGradient><radialGradient id="shade" cx="30%" cy="25%" r="75%"><stop offset=".3" stop-color="#02050a" stop-opacity="0"/><stop offset=".78" stop-color="#02050a" stop-opacity=".25"/><stop offset="1" stop-color="#02050a" stop-opacity=".87"/></radialGradient><filter id="glow"><feGaussianBlur stdDeviation="11"/></filter></defs><circle cx="385" cy="390" r="267" fill="none" stroke="#4075a0" opacity=".3" stroke-width="12" filter="url(#glow)"/><circle cx="385" cy="390" r="265" fill="url(#ocean)" stroke="#375674"/><g id="globe-land"></g><path id="globe-grid" fill="none" stroke="#6a8faf" stroke-width=".5" opacity=".19"/><circle cx="385" cy="390" r="265" fill="url(#shade)"/><g id="globe-point"></g><g id="globe-conflicts"></g><circle cx="385" cy="390" r="278" fill="none" stroke="#5a789b" stroke-width=".6" stroke-dasharray="2 11" opacity=".4"/></svg></a><div id="globe-country-popover" class="globe-country-popover" hidden></div><div id="globe-detail-hint" class="globe-detail-hint" hidden>클릭하면 세계지도에서 자세히 볼 수 있어요 ↗</div><div class="globe-controls"><button id="prev-country" aria-label="이전 국가">←</button><span id="country-counter"></span><button id="next-country" aria-label="다음 국가">→</button></div></div><aside id="intro-detail" class="intro-card" aria-live="polite"></aside></div><div class="intro-foot"><span>핵심 경제국 50 · EIA 석유 생산국 99 · 중복 제외 105개국</span><span>기업 공시·공개 자료 기반 · 주가 피드 미연동</span></div></section>
+</head><body>
+<header class="header"><a class="brand" href="#intro" aria-label="3E 첫 화면"><svg viewBox="0 0 170 65" aria-hidden="true"><text x="0" y="53" fill="currentColor" font-family="Arial,sans-serif" font-size="62" font-weight="500">3E</text></svg><span class="brand-sub">Efficiency, Effectiveness, Economy</span></a><div class="account"><button data-auth="login">로그인</button><button class="primary" data-auth="signup">회원가입</button></div></header>
+<section id="intro" class="intro"><div class="intro-top"><span class="eyebrow">GLOBAL ECONOMIC ATLAS / 02</span><span class="badge">105 COUNTRIES · INDUSTRY NETWORK</span></div><div class="intro-layout"><div class="globe-wrap"><div class="globe-title"><h1>세계의 흐름을,<br>한눈에.</h1><p>스크롤·드래그로 국가 탐색 · 국가 점은 한 번 클릭 · 자세한 지도는 더블 클릭/더블 탭</p></div><button id="globe-open" class="globe-button" aria-label="회전하는 지구. 세계지도는 더블 클릭 또는 더블 탭"><canvas id="earth-3d" aria-hidden="true"></canvas><span class="satellite-earth" aria-hidden="true"><span class="earth-atmosphere"></span></span><svg id="globe" viewBox="0 0 760 710" aria-hidden="true"><defs><radialGradient id="ocean" cx="32%" cy="28%"><stop offset="0" stop-color="#182f49"/><stop offset=".7" stop-color="#091322"/><stop offset="1" stop-color="#02060b"/></radialGradient><radialGradient id="shade" cx="30%" cy="25%" r="75%"><stop offset=".3" stop-color="#02050a" stop-opacity="0"/><stop offset=".78" stop-color="#02050a" stop-opacity=".25"/><stop offset="1" stop-color="#02050a" stop-opacity=".87"/></radialGradient><filter id="glow"><feGaussianBlur stdDeviation="11"/></filter></defs><circle cx="385" cy="390" r="267" fill="none" stroke="#4075a0" opacity=".3" stroke-width="12" filter="url(#glow)"/><circle cx="385" cy="390" r="265" fill="url(#ocean)" stroke="#375674"/><g id="globe-land"></g><path id="globe-grid" fill="none" stroke="#6a8faf" stroke-width=".5" opacity=".19"/><circle cx="385" cy="390" r="265" fill="url(#shade)"/><g id="globe-point"></g><g id="globe-conflicts"></g><circle cx="385" cy="390" r="278" fill="none" stroke="#5a789b" stroke-width=".6" stroke-dasharray="2 11" opacity=".4"/></svg></button><div id="globe-country-popover" class="globe-country-popover" hidden></div><div id="globe-detail-hint" class="globe-detail-hint" hidden>더블 클릭하면 세계지도에서 자세히 볼 수 있어요 ↗</div><div class="space-policy-links" aria-label="우주 경제·정책 주제"><button data-space-topic="artemis">☾ ARTEMIS ACCORDS <small>76개국</small></button><button data-space-topic="debris">◌ ORBITAL DEBRIS <small>우주쓰레기</small></button></div><div class="globe-conflict-links"><button data-globe-conflict="ukraine">⚔ 러시아–우크라이나</button><button data-globe-conflict="iran">⚔ 미국–이란</button><button data-globe-conflict="arctic-greenland">◈ 북극·그린란드</button><button data-globe-conflict="high-north">◈ High North</button></div><div class="globe-controls"><button id="prev-country" aria-label="이전 국가">←</button><span id="country-counter"></span><button id="next-country" aria-label="다음 국가">→</button></div></div><aside id="intro-detail" class="intro-card" aria-live="polite"></aside></div><div class="intro-foot"><span>핵심 경제국 50 · EIA 석유 생산국 99 · 중복 제외 105개국</span><span>기업 공시·공개 자료 기반 · 주가 피드 미연동</span></div></section>
 <div id="app" hidden><nav class="nav" aria-label="주 메뉴"><button data-route="news">뉴스</button><button data-route="indicators">지표</button><button data-route="products">금융상품</button><button data-route="mypage">마이페이지</button><button data-route="about">ABOUT</button></nav><div class="market-strip"><span>공식 통계 · 조회 중</span></div><section id="news-banner" class="news-banner" aria-label="주요 경제 뉴스"><div class="news-banner-label"><span class="pulse-dot"></span><b>NEWS NOW</b></div><div class="news-banner-track"><span>최신 경제뉴스를 불러오는 중입니다.</span></div></section><main id="content" class="main-content"></main><footer class="footer"><span>3E / Efficiency, Effectiveness, Economy</span><span>지도: Natural Earth · 공시: 기업별 출처 · 환율: Frankfurter</span></footer></div>
 <dialog id="auth-dialog" aria-labelledby="auth-title"><button class="close" id="auth-close" aria-label="닫기">×</button><h2 id="auth-title"></h2><p class="muted" style="font-size:14px">계정 연결 전 화면 미리보기입니다. 실제 계정은 생성되지 않으며 입력값은 전송·저장하지 않습니다.</p><form id="auth-form"><div id="name-field"><label class="form-label" for="auth-name">이름</label><input id="auth-name" autocomplete="name" maxlength="40"></div><label class="form-label" for="auth-email">이메일</label><input id="auth-email" type="email" autocomplete="email" required placeholder="you@example.com"><label class="form-label" for="auth-password">비밀번호</label><input id="auth-password" type="password" required minlength="8" autocomplete="current-password" placeholder="8자 이상"><button class="primary" id="auth-submit" type="submit"></button><p id="auth-message" role="status"></p><button id="auth-switch" type="button"></button></form></dialog>
 <dialog id="info-dialog" aria-labelledby="info-title"><button id="info-close" class="close" aria-label="닫기">×</button><h2 id="info-title"></h2><div id="info-body"></div></dialog>
@@ -7791,7 +7760,7 @@ function localFxText(c){
 async function showGlobeCountryCard(c){
  const box=$('#globe-country-popover');if(!box)return;const token=++globeCardRequest;box.dataset.country=c.id;box.hidden=false;
  const companies=(COMPANIES_BY_COUNTRY.get(c.id)||[]).length;
- box.innerHTML=`<div class="mini-head"><div><small>COUNTRY SNAPSHOT</small><h3>${escapeHtml(c.name)}</h3><span class="mini-en">${escapeHtml(c.en)}</span></div><span class="badge">${escapeHtml(c.region)}</span></div><div class="mini-grid"><div><small>환율 · KRW 기준</small><b>${escapeHtml(localFxText(c))}</b></div><div><small>경제수준 · World Bank</small><b data-income>조회 중…</b></div><div><small>산업 연결</small><b>${companies.toLocaleString('ko-KR')}개 기업</b></div><div><small>경제 포지션</small><b>${c.core?'핵심 경제국':'확장 관측국'}${c.oil?' · 산유국':''}</b></div></div><p class="mini-topic">${escapeHtml(c.topic)}<br><span>클릭하면 세계지도에서 자세히 볼 수 있습니다.</span></p>`;
+ box.innerHTML=`<div class="mini-head"><div><small>COUNTRY SNAPSHOT</small><h3>${escapeHtml(c.name)}</h3><span class="mini-en">${escapeHtml(c.en)}</span></div><span class="badge">${escapeHtml(c.region)}</span></div><div class="mini-grid"><div><small>환율 · KRW 기준</small><b>${escapeHtml(localFxText(c))}</b></div><div><small>경제수준 · World Bank</small><b data-income>조회 중…</b></div><div><small>산업 연결</small><b>${companies.toLocaleString('ko-KR')}개 기업</b></div><div><small>경제 포지션</small><b>${c.core?'핵심 경제국':'확장 관측국'}${c.oil?' · 산유국':''}</b></div></div><p class="mini-topic">${escapeHtml(c.topic)}<br><span>더블 클릭하면 세계지도에서 자세히 볼 수 있습니다.</span></p>`;
  try{
   if(location.protocol==='file:')throw new Error('local');
   const r=await fetch('/api/country-profile?code='+encodeURIComponent(c.id),{signal:AbortSignal.timeout(9000)});if(!r.ok)throw new Error('http');const d=await r.json();
@@ -7817,18 +7786,36 @@ function chooseCountry(index,animate=true){
  if(state.route==='map'){updateMapSelection();renderCountryPanel();}
 }
 function chooseById(id){const index=COUNTRIES.findIndex(c=>c.id===id);if(index<0)return false;chooseCountry(index);return true;}
-function openMap(){
-  if(opening)return;
-  opening=true;
-  hideGlobeCountryCard();
-  const go=()=>{
-    if(location.hash!=='#map')location.hash='#map';
-    else navigate();
-    opening=false;
-  };
-  go();
-}
+async function openMap(){if(opening)return;opening=true;$('#intro').classList.add('launching');await new Promise(r=>setTimeout(r,matchMedia('(prefers-reduced-motion: reduce)').matches?0:600));location.hash='map';opening=false;}
+$('#globe-open').addEventListener('wheel',e=>{if(Math.abs(e.deltaY)<5)return;e.preventDefault();hideGlobeCountryCard();if(Date.now()-lastWheel>780){lastWheel=Date.now();chooseCountry(state.selected+(e.deltaY>0?1:-1));}},{passive:false});
+$('#prev-country').onclick=()=>chooseCountry(state.selected-1);$('#next-country').onclick=()=>chooseCountry(state.selected+1);
+$('#globe-open').onclick=()=>{if(Date.now()>suppressClickUntil)flashGlobeDetailHint();};
 const globeOpen=$('#globe-open');
+globeOpen.addEventListener('dblclick',e=>{if(Date.now()<=suppressClickUntil)return;e.preventDefault();hideGlobeCountryCard();openMap();});
+globeOpen.addEventListener('pointerdown',e=>{
+  if(e.button!==0&&e.pointerType==='mouse')return;
+  if(e.target?.closest?.('#globe-point circle,#globe-conflicts .globe-conflict-ring'))return;
+  globeTimer?.stop();hideGlobeCountryCard();globeDragging=false;globePointerId=e.pointerId;globeDragStart=[e.clientX,e.clientY];globeRotateStart=globeProjection.rotate().slice();
+  globeOpen.setPointerCapture?.(e.pointerId);globeOpen.classList.add('grabbing');
+});
+globeOpen.addEventListener('pointermove',e=>{
+  if(e.pointerId!==globePointerId||!globeDragStart)return;
+  const dx=e.clientX-globeDragStart[0],dy=e.clientY-globeDragStart[1];
+  if(!globeDragging&&Math.hypot(dx,dy)<4)return;
+  globeDragging=true;suppressClickUntil=Date.now()+500;e.preventDefault();
+  const rect=globeOpen.getBoundingClientRect(),sensitivity=180/Math.max(320,Math.min(rect.width,rect.height));
+  const lon=globeRotateStart[0]+dx*sensitivity,lat=Math.max(-80,Math.min(80,globeRotateStart[1]-dy*sensitivity));
+  globeProjection.rotate([lon,lat,globeRotateStart[2]||0]);drawGlobe();
+});
+function endGlobeDrag(e){
+  if(e.pointerId!==globePointerId)return;
+  const wasDragging=globeDragging;
+  if(wasDragging)suppressClickUntil=Date.now()+500;
+  if(e.pointerType==='touch'&&!wasDragging){const now=Date.now();if(now-lastGlobeTap<480){suppressClickUntil=now+700;lastGlobeTap=0;hideGlobeCountryCard();openMap();}else{lastGlobeTap=now;flashGlobeDetailHint();}}
+  try{globeOpen.releasePointerCapture?.(e.pointerId);}catch{}
+  globeOpen.classList.remove('grabbing');globePointerId=null;globeDragStart=null;globeRotateStart=null;globeDragging=false;
+}
+globeOpen.addEventListener('pointerup',endGlobeDrag);globeOpen.addEventListener('pointercancel',endGlobeDrag);
 document.querySelectorAll('[data-globe-conflict]').forEach(button=>button.onclick=()=>{const conflict=CONFLICTS.find(c=>c.id===button.dataset.globeConflict);if(conflict)showConflict(conflict.id);});
 document.querySelectorAll('[data-space-topic]').forEach(button=>button.onclick=()=>showSpaceTopic(button.dataset.spaceTopic));
 function title(kicker,heading,subtitle){return `<div class="page-title"><div><span class="eyebrow">${kicker}</span><h1>${heading}</h1><p>${subtitle}</p></div><button onclick="location.hash='map'">세계지도 ↗</button></div>`;}
@@ -8300,39 +8287,27 @@ if(canvas&&host){
     const group=new THREE.Group();scene.add(group);
     const loader=new THREE.TextureLoader();loader.setCrossOrigin('anonymous');
     const load=url=>new Promise((resolve,reject)=>loader.load(url,resolve,undefined,reject));
-    const [day,specular,normal,cloudsMap,lightsMap]=await Promise.all([
+    const [day,specular,normal,cloudsMap]=await Promise.all([
       load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg'),
       load('https://threejs.org/examples/textures/planets/earth_specular_2048.jpg'),
       load('https://threejs.org/examples/textures/planets/earth_normal_2048.jpg'),
-      load('https://threejs.org/examples/textures/planets/earth_clouds_1024.png'),
-      load('https://threejs.org/examples/textures/planets/earth_lights_2048.png').catch(()=>null)
+      load('https://threejs.org/examples/textures/planets/earth_clouds_1024.png')
     ]);
     day.colorSpace=THREE.SRGBColorSpace;day.anisotropy=renderer.capabilities.getMaxAnisotropy();
-    if(lightsMap){lightsMap.colorSpace=THREE.SRGBColorSpace;lightsMap.anisotropy=renderer.capabilities.getMaxAnisotropy();}
 
-    const earthMaterial=new THREE.MeshPhongMaterial({
-      map:day,specularMap:specular,normalMap:normal,normalScale:new THREE.Vector2(.42,.42),
-      specular:new THREE.Color(0x587895),shininess:13,
-      emissive:new THREE.Color(0xffb86b),emissiveIntensity:lightsMap?.42:0,emissiveMap:lightsMap||null
-    });
-    const earth=new THREE.Mesh(new THREE.SphereGeometry(5.45,192,192),earthMaterial);
+    const earth=new THREE.Mesh(new THREE.SphereGeometry(5.45,160,160),new THREE.MeshPhongMaterial({map:day,specularMap:specular,normalMap:normal,normalScale:new THREE.Vector2(.55,.55),specular:new THREE.Color(0x587895),shininess:15}));
     earth.rotation.set(THREE.MathUtils.degToRad(8),THREE.MathUtils.degToRad(145),THREE.MathUtils.degToRad(23.5));
     group.add(earth);
 
     const clouds=new THREE.Mesh(new THREE.SphereGeometry(5.54,160,160),new THREE.MeshPhongMaterial({map:cloudsMap,transparent:true,opacity:.37,depthWrite:false,blending:THREE.NormalBlending}));
     clouds.rotation.copy(earth.rotation);group.add(clouds);
 
-    const atmosphere=new THREE.Mesh(new THREE.SphereGeometry(5.57,192,192),new THREE.ShaderMaterial({
-      side:THREE.BackSide,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,
-      uniforms:{glowColor:{value:new THREE.Color(0x9fdcff)},intensity:{value:.40}},
-      vertexShader:`varying vec3 vNormal; varying vec3 vWorldPosition; void main(){vNormal=normalize(normalMatrix*normal);vec4 wp=modelMatrix*vec4(position,1.0);vWorldPosition=wp.xyz;gl_Position=projectionMatrix*viewMatrix*wp;}`,
-      fragmentShader:`varying vec3 vNormal; varying vec3 vWorldPosition; uniform vec3 glowColor; uniform float intensity; void main(){vec3 viewDir=normalize(cameraPosition-vWorldPosition);float edge=1.0-max(dot(viewDir,vNormal),0.0);float core=pow(edge,5.6);float haze=pow(edge,2.2)*.12;float alpha=(core+haze)*intensity;gl_FragColor=vec4(glowColor,alpha);}`
-    }));
+    const atmosphere=new THREE.Mesh(new THREE.SphereGeometry(5.67,160,160),new THREE.ShaderMaterial({side:THREE.BackSide,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,uniforms:{glowColor:{value:new THREE.Color(0x63c9ff)},intensity:{value:1.12}},vertexShader:`varying vec3 vNormal; varying vec3 vWorldPosition; void main(){vNormal=normalize(normalMatrix*normal);vec4 wp=modelMatrix*vec4(position,1.0);vWorldPosition=wp.xyz;gl_Position=projectionMatrix*viewMatrix*wp;}`,fragmentShader:`varying vec3 vNormal; varying vec3 vWorldPosition; uniform vec3 glowColor; uniform float intensity; void main(){vec3 viewDir=normalize(cameraPosition-vWorldPosition);float fresnel=pow(1.0-max(dot(viewDir,vNormal),0.0),3.45);gl_FragColor=vec4(glowColor,fresnel*intensity);}`}));
     atmosphere.rotation.copy(earth.rotation);group.add(atmosphere);
 
-    const sun=new THREE.DirectionalLight(0xfff7ed,2.85);sun.position.set(-5.8,4.9,7.8);scene.add(sun);
-    scene.add(new THREE.AmbientLight(0x71808f,.13));
-    const rim=new THREE.DirectionalLight(0xbfe9ff,.22);rim.position.set(7.5,.2,-5.2);scene.add(rim);
+    const sun=new THREE.DirectionalLight(0xffffff,2.5);sun.position.set(-5.8,4.6,7.2);scene.add(sun);
+    scene.add(new THREE.AmbientLight(0x4e6a86,.15));
+    const rim=new THREE.DirectionalLight(0x6bcaff,.38);rim.position.set(7,-1,-5);scene.add(rim);
 
     const starCount=720,positions=new Float32Array(starCount*3);
     for(let i=0;i<starCount;i++){const radius=42+Math.random()*95,theta=Math.random()*Math.PI*2,phi=Math.acos(2*Math.random()-1);positions[i*3]=radius*Math.sin(phi)*Math.cos(theta);positions[i*3+1]=radius*Math.cos(phi);positions[i*3+2]=radius*Math.sin(phi)*Math.sin(theta)}
@@ -8342,40 +8317,21 @@ if(canvas&&host){
     const place=()=>{
       const mobile=innerWidth<760;
       camera.aspect=innerWidth/innerHeight;
-      if(mobile){
-        camera.fov=37;
-        camera.position.set(0,.18,22.8);
-        group.position.set(0,-1.55,0);
-        group.scale.setScalar(.94);
-        renderer.setPixelRatio(Math.min(devicePixelRatio||1,2.2));
-      }else{
-        camera.fov=34;
-        camera.position.set(0,.28,24.2);
-        group.position.set(0,-1.48,0);
-        group.scale.setScalar(1.0);
-        renderer.setPixelRatio(Math.min(devicePixelRatio||1,2.5));
-      }
-      camera.lookAt(new THREE.Vector3(0,-.72,0));
-      camera.updateProjectionMatrix();
-      renderer.setSize(innerWidth,innerHeight,false)
+      if(mobile){camera.fov=30;camera.position.set(-1.05,.18,6.35);group.position.set(2.55,-1.72,-.55);group.scale.setScalar(1.03);renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.8))}
+      else{camera.fov=27;camera.position.set(-1.62,.42,6.15);group.position.set(3.35,-1.36,-.72);group.scale.setScalar(1.0);renderer.setPixelRatio(Math.min(devicePixelRatio||1,2))}
+      camera.lookAt(new THREE.Vector3(.55,-.15,-.6));camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false)
     };
     place();addEventListener('resize',place,{passive:true});
 
+    let drag=false,lastX=0,lastY=0;
+    host.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;drag=true;lastX=e.clientX;lastY=e.clientY});
+    host.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;earth.rotation.y+=dx*.0017;earth.rotation.x=Math.max(-.18,Math.min(.18,earth.rotation.x+dy*.0007));clouds.rotation.y+=dx*.0019;clouds.rotation.x=earth.rotation.x;atmosphere.rotation.x=earth.rotation.x});
+    const stop=()=>drag=false;host.addEventListener('pointerup',stop);host.addEventListener('pointercancel',stop);host.addEventListener('pointerleave',stop);
+
     document.body.classList.add('earth-webgl-ready');
     let last=performance.now();
-    const animate=now=>{const dt=Math.min(.05,(now-last)/1000||0);last=now;if(!matchMedia('(prefers-reduced-motion: reduce)').matches){earth.rotation.y+=dt*.0072;clouds.rotation.y+=dt*.0092}stars.rotation.y+=dt*.00012;renderer.render(scene,camera);requestAnimationFrame(animate)};
+    const animate=now=>{const dt=Math.min(.05,(now-last)/1000||0);last=now;if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!drag){earth.rotation.y+=dt*.0072;clouds.rotation.y+=dt*.0092}stars.rotation.y+=dt*.00012;renderer.render(scene,camera);requestAnimationFrame(animate)};
     requestAnimationFrame(animate);
   }catch(err){console.warn('3E Earth fallback active',err)}
 }
-</script>\n<script>
-document.addEventListener('click',function(e){
-  const target=e.target.closest&&e.target.closest('#globe-open');
-  if(!target)return;
-  const intro=document.getElementById('intro');
-  const app=document.getElementById('app');
-  if(intro)intro.hidden=true;
-  if(app)app.hidden=false;
-  location.hash='map';
-  if(typeof navigate==='function')setTimeout(navigate,0);
-},true);
-</script></body></html>
+</script>\n</body></html>
