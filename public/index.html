@@ -196,7 +196,7 @@ body.intro-mode #intro:before{content:"";position:absolute;inset:0;pointer-event
 body.intro-mode .intro-top,body.intro-mode .globe-title,body.intro-mode .globe-controls,body.intro-mode .intro-card,body.intro-mode .intro-foot,body.intro-mode .globe-country-popover,body.intro-mode .globe-detail-hint,body.intro-mode .globe-conflict-links,body.intro-mode .space-policy-links,body.intro-mode .space-asset{display:none!important}
 body.intro-mode .intro-layout{display:block;min-height:0;width:min(78vw,850px);max-width:none;margin:0;position:relative;z-index:2}
 body.intro-mode .globe-wrap{margin:0!important;display:grid;place-items:center}
-body.intro-mode .globe-button{position:relative;width:min(74vw,760px);aspect-ratio:1;border-radius:50%;overflow:visible;filter:drop-shadow(0 0 32px rgba(71,137,197,.18));cursor:grab;touch-action:manipulation}
+body.intro-mode .globe-button{cursor:pointer!important;position:relative;width:min(74vw,760px);aspect-ratio:1;border-radius:50%;overflow:visible;filter:drop-shadow(0 0 32px rgba(71,137,197,.18));cursor:grab;touch-action:manipulation}
 body.intro-mode .globe-button:active{cursor:grabbing}
 body.intro-mode #globe{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 .satellite-earth{position:relative;display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;background-color:#04101b;background-image:url('https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57730/land_ocean_ice_2048.jpg');background-repeat:repeat-x;background-size:auto 100%;background-position:0 50%;box-shadow:inset -86px -36px 120px rgba(0,0,0,.82),inset 28px 16px 48px rgba(123,184,224,.11),0 0 3px 1px rgba(177,219,255,.8),0 0 42px 5px rgba(70,147,207,.22);animation:earthRotation 82s linear infinite;will-change:background-position}
@@ -288,29 +288,13 @@ body.earth-webgl-ready .satellite-earth{opacity:0}
 body.intro-mode #globe{display:none!important}
 body.intro-mode #earth-3d{pointer-events:none!important}
 body.intro-mode .satellite-earth{pointer-events:none!important}
-body.intro-mode .intro-enter-hint{
-  position:absolute;left:50%;bottom:30px;z-index:8;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:2px;pointer-events:none;
-  color:rgba(235,242,250,.64);text-align:center;text-shadow:0 2px 10px rgba(0,0,0,.78)
-}
-body.intro-mode .intro-enter-hint span{
-  font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-size:9px;font-weight:600;
-  letter-spacing:.22em
-}
-body.intro-mode .intro-enter-hint small{
-  font-family:Inter,"Pretendard","Malgun Gothic",sans-serif;font-size:10px;
-  letter-spacing:.035em;color:rgba(225,234,243,.58)
-}
 @media(max-width:700px){
   body.intro-mode .header{padding:22px 16px 0}
   body.intro-mode .header .brand svg{width:102px;height:55px}
   body.intro-mode .header .brand svg text{font-size:57px!important;letter-spacing:-3.2px}
   body.intro-mode .header .brand-sub{font-size:10px;letter-spacing:.10em;white-space:normal}
   body.intro-mode .satellite-earth:before{top:57%;width:min(88vw,650px)}
-  body.intro-mode .intro-enter-hint{bottom:22px}
-  body.intro-mode .intro-enter-hint span{font-size:8px}
-  body.intro-mode .intro-enter-hint small{font-size:9px}
-}
+  }
 @media(prefers-reduced-motion:reduce){#earth-3d{transition:none}}
 </style>
 <meta name="robots" content="index, follow">
@@ -322,7 +306,7 @@ body.intro-mode .intro-enter-hint small{
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"3E","alternateName":"Efficiency, Effectiveness, Economy","url":"https://three-e-global-economy.ejeon18.chatgpt.site/","inLanguage":"ko"}</script>
 </head><body class="intro-mode">
 <header class="header"><a class="brand" href="#intro" aria-label="3E 첫 화면"><svg viewBox="0 0 170 65" aria-hidden="true"><text x="85" y="53" text-anchor="middle" fill="currentColor" font-family="Arial,sans-serif" font-size="62" font-weight="500">3E</text></svg><span class="brand-sub">Efficiency, Effectiveness, Economy</span></a><div class="account"><button data-auth="login">로그인</button><button class="primary" data-auth="signup">회원가입</button></div></header>
-<section id="intro" class="intro"><div class="intro-top"><span class="eyebrow">GLOBAL ECONOMIC ATLAS / 02</span><span class="badge">105 COUNTRIES · INDUSTRY NETWORK</span></div><div class="intro-layout"><div class="globe-wrap"><div class="globe-title"><h1>세계의 흐름을,<br>한눈에.</h1><p>스크롤·드래그로 국가 탐색 · 국가 점은 한 번 클릭 · 자세한 지도는 더블 클릭/더블 탭</p></div><button id="globe-open" class="globe-button" aria-label="회전하는 지구. 클릭하면 세계지도를 엽니다"><canvas id="earth-3d" aria-hidden="true"></canvas><span class="satellite-earth" aria-hidden="true"><span class="earth-atmosphere"></span></span><svg id="globe" viewBox="0 0 760 710" aria-hidden="true"><defs><radialGradient id="ocean" cx="32%" cy="28%"><stop offset="0" stop-color="#182f49"/><stop offset=".7" stop-color="#091322"/><stop offset="1" stop-color="#02060b"/></radialGradient><radialGradient id="shade" cx="30%" cy="25%" r="75%"><stop offset=".3" stop-color="#02050a" stop-opacity="0"/><stop offset=".78" stop-color="#02050a" stop-opacity=".25"/><stop offset="1" stop-color="#02050a" stop-opacity=".87"/></radialGradient><filter id="glow"><feGaussianBlur stdDeviation="11"/></filter></defs><circle cx="385" cy="390" r="267" fill="none" stroke="#4075a0" opacity=".3" stroke-width="12" filter="url(#glow)"/><circle cx="385" cy="390" r="265" fill="url(#ocean)" stroke="#375674"/><g id="globe-land"></g><path id="globe-grid" fill="none" stroke="#6a8faf" stroke-width=".5" opacity=".19"/><circle cx="385" cy="390" r="265" fill="url(#shade)"/><g id="globe-point"></g><g id="globe-conflicts"></g><circle cx="385" cy="390" r="278" fill="none" stroke="#5a789b" stroke-width=".6" stroke-dasharray="2 11" opacity=".4"/></svg></button><div id="globe-country-popover" class="globe-country-popover" hidden></div><div class="intro-enter-hint" aria-hidden="true"><span>DOUBLE CLICK TO ENTER</span><small>더블클릭하면 메인 페이지로 이동합니다</small></div><div id="globe-detail-hint" class="globe-detail-hint" hidden>클릭하면 세계지도에서 자세히 볼 수 있어요 ↗</div><div class="globe-controls"><button id="prev-country" aria-label="이전 국가">←</button><span id="country-counter"></span><button id="next-country" aria-label="다음 국가">→</button></div></div><aside id="intro-detail" class="intro-card" aria-live="polite"></aside></div><div class="intro-foot"><span>핵심 경제국 50 · EIA 석유 생산국 99 · 중복 제외 105개국</span><span>기업 공시·공개 자료 기반 · 주가 피드 미연동</span></div></section>
+<section id="intro" class="intro"><div class="intro-top"><span class="eyebrow">GLOBAL ECONOMIC ATLAS / 02</span><span class="badge">105 COUNTRIES · INDUSTRY NETWORK</span></div><div class="intro-layout"><div class="globe-wrap"><div class="globe-title"><h1>세계의 흐름을,<br>한눈에.</h1><p>지구를 클릭하면 세계지도로 이동합니다</p></div><button id="globe-open" class="globe-button" aria-label="회전하는 지구. 클릭하면 세계지도를 엽니다"><canvas id="earth-3d" aria-hidden="true"></canvas><span class="satellite-earth" aria-hidden="true"><span class="earth-atmosphere"></span></span><svg id="globe" viewBox="0 0 760 710" aria-hidden="true"><defs><radialGradient id="ocean" cx="32%" cy="28%"><stop offset="0" stop-color="#182f49"/><stop offset=".7" stop-color="#091322"/><stop offset="1" stop-color="#02060b"/></radialGradient><radialGradient id="shade" cx="30%" cy="25%" r="75%"><stop offset=".3" stop-color="#02050a" stop-opacity="0"/><stop offset=".78" stop-color="#02050a" stop-opacity=".25"/><stop offset="1" stop-color="#02050a" stop-opacity=".87"/></radialGradient><filter id="glow"><feGaussianBlur stdDeviation="11"/></filter></defs><circle cx="385" cy="390" r="267" fill="none" stroke="#4075a0" opacity=".3" stroke-width="12" filter="url(#glow)"/><circle cx="385" cy="390" r="265" fill="url(#ocean)" stroke="#375674"/><g id="globe-land"></g><path id="globe-grid" fill="none" stroke="#6a8faf" stroke-width=".5" opacity=".19"/><circle cx="385" cy="390" r="265" fill="url(#shade)"/><g id="globe-point"></g><g id="globe-conflicts"></g><circle cx="385" cy="390" r="278" fill="none" stroke="#5a789b" stroke-width=".6" stroke-dasharray="2 11" opacity=".4"/></svg></button><div id="globe-country-popover" class="globe-country-popover" hidden></div><div id="globe-detail-hint" class="globe-detail-hint" hidden>클릭하면 세계지도에서 자세히 볼 수 있어요 ↗</div><div class="globe-controls"><button id="prev-country" aria-label="이전 국가">←</button><span id="country-counter"></span><button id="next-country" aria-label="다음 국가">→</button></div></div><aside id="intro-detail" class="intro-card" aria-live="polite"></aside></div><div class="intro-foot"><span>핵심 경제국 50 · EIA 석유 생산국 99 · 중복 제외 105개국</span><span>기업 공시·공개 자료 기반 · 주가 피드 미연동</span></div></section>
 <div id="app" hidden><nav class="nav" aria-label="주 메뉴"><button data-route="news">뉴스</button><button data-route="indicators">지표</button><button data-route="products">금융상품</button><button data-route="mypage">마이페이지</button><button data-route="about">ABOUT</button></nav><div class="market-strip"><span>공식 통계 · 조회 중</span></div><section id="news-banner" class="news-banner" aria-label="주요 경제 뉴스"><div class="news-banner-label"><span class="pulse-dot"></span><b>NEWS NOW</b></div><div class="news-banner-track"><span>최신 경제뉴스를 불러오는 중입니다.</span></div></section><main id="content" class="main-content"></main><footer class="footer"><span>3E / Efficiency, Effectiveness, Economy</span><span>지도: Natural Earth · 공시: 기업별 출처 · 환율: Frankfurter</span></footer></div>
 <dialog id="auth-dialog" aria-labelledby="auth-title"><button class="close" id="auth-close" aria-label="닫기">×</button><h2 id="auth-title"></h2><p class="muted" style="font-size:14px">계정 연결 전 화면 미리보기입니다. 실제 계정은 생성되지 않으며 입력값은 전송·저장하지 않습니다.</p><form id="auth-form"><div id="name-field"><label class="form-label" for="auth-name">이름</label><input id="auth-name" autocomplete="name" maxlength="40"></div><label class="form-label" for="auth-email">이메일</label><input id="auth-email" type="email" autocomplete="email" required placeholder="you@example.com"><label class="form-label" for="auth-password">비밀번호</label><input id="auth-password" type="password" required minlength="8" autocomplete="current-password" placeholder="8자 이상"><button class="primary" id="auth-submit" type="submit"></button><p id="auth-message" role="status"></p><button id="auth-switch" type="button"></button></form></dialog>
 <dialog id="info-dialog" aria-labelledby="info-title"><button id="info-close" class="close" aria-label="닫기">×</button><h2 id="info-title"></h2><div id="info-body"></div></dialog>
@@ -8421,14 +8405,9 @@ if(canvas&&host){
     };
     place();addEventListener('resize',place,{passive:true});
 
-    let drag=false,lastX=0,lastY=0;
-    host.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;drag=true;lastX=e.clientX;lastY=e.clientY});
-    host.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;earth.rotation.y+=dx*.0017;earth.rotation.x=Math.max(-.18,Math.min(.18,earth.rotation.x+dy*.0007));clouds.rotation.y+=dx*.0019;clouds.rotation.x=earth.rotation.x;atmosphere.rotation.x=earth.rotation.x});
-    const stop=()=>drag=false;host.addEventListener('pointerup',stop);host.addEventListener('pointercancel',stop);host.addEventListener('pointerleave',stop);
-
     document.body.classList.add('earth-webgl-ready');
     let last=performance.now();
-    const animate=now=>{const dt=Math.min(.05,(now-last)/1000||0);last=now;if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!drag){earth.rotation.y+=dt*.0072;clouds.rotation.y+=dt*.0092}stars.rotation.y+=dt*.00012;renderer.render(scene,camera);requestAnimationFrame(animate)};
+    const animate=now=>{const dt=Math.min(.05,(now-last)/1000||0);last=now;if(!matchMedia('(prefers-reduced-motion: reduce)').matches){earth.rotation.y+=dt*.0072;clouds.rotation.y+=dt*.0092}stars.rotation.y+=dt*.00012;renderer.render(scene,camera);requestAnimationFrame(animate)};
     requestAnimationFrame(animate);
   }catch(err){console.warn('3E Earth fallback active',err)}
 }
