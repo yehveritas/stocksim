@@ -7655,7 +7655,7 @@ const world=JSON.parse($('#world-data').textContent);
 const featureId=f=>f.properties.ADM0_A3==='SDS'?'SSD':f.properties.ADM0_A3;
 const FEATURE_BY_ID=new Map(world.features.map(f=>[featureId(f),f]));
 const initialPool=COUNTRIES.filter(c=>c.core);
-const state={selected:COUNTRIES.indexOf(initialPool[Math.floor(Math.random()*initialPool.length)]),route:'intro',category:'물가',favorites:[],savedProducts:[],auth:'login',fx:[],fxStatus:'불러오는 중',fxChecked:null,filter:'core',metric:'stock',activeCompany:null,pinnedCompany:null,showConflicts:true};
+const state={selected:COUNTRIES.indexOf(initialPool[Math.floor(Math.random()*initialPool.length)]),route:'intro',category:'주요뉴스',favorites:[],savedProducts:[],auth:'login',fx:[],fxStatus:'불러오는 중',fxChecked:null,filter:'core',metric:'stock',activeCompany:null,pinnedCompany:null,showConflicts:true};
 const COUNTRY_CURRENCY={
  USA:'USD',CAN:'CAD',MEX:'MXN',BRA:'BRL',ARG:'ARS',CHL:'CLP',COL:'COP',GBR:'GBP',NOR:'NOK',FRA:'EUR',DEU:'EUR',ITA:'EUR',ESP:'EUR',NLD:'EUR',CHE:'CHF',SWE:'SEK',DNK:'DKK',POL:'PLN',AUT:'EUR',BEL:'EUR',FIN:'EUR',IRL:'EUR',PRT:'EUR',GRC:'EUR',SVK:'EUR',LTU:'EUR',LVA:'EUR',EST:'EUR',CZE:'CZK',HUN:'HUF',ROU:'RON',BGR:'BGN',HRV:'EUR',TUR:'TRY',SAU:'SAR',ARE:'AED',QAT:'QAR',KWT:'KWD',ISR:'ILS',CHN:'CNY',JPN:'JPY',KOR:'KRW',TWN:'TWD',IND:'INR',IDN:'IDR',MYS:'MYR',SGP:'SGD',VNM:'VND',THA:'THB',PHL:'PHP',AUS:'AUD',NZL:'NZD',ZAF:'ZAR',MAR:'MAD',EGY:'EGP',PAK:'PKR',BGD:'BDT'
 };
