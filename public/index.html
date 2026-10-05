@@ -257,7 +257,7 @@ body.intro-mode .intro-layout{
   display:block;width:100vw;height:100svh;min-height:100svh;margin:0;max-width:none;
   position:relative;z-index:2
 }
-body.intro-mode .globe-wrap{width:100%;height:100%;margin:0!important;display:block}
+body.intro-mode .globe-wrap{width:100%;height:100%;margin:0!important;display:block;cursor:pointer}
 body.intro-mode .globe-button{
   position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0;
   padding:0;margin:0;background:transparent;overflow:hidden;filter:none;
@@ -286,6 +286,8 @@ body.intro-mode .earth-atmosphere{display:none!important}
 body.earth-webgl-ready #earth-3d{opacity:1}
 body.earth-webgl-ready .satellite-earth{opacity:0}
 body.intro-mode #globe{display:none!important}
+body.intro-mode #earth-3d{pointer-events:none!important}
+body.intro-mode .satellite-earth{pointer-events:none!important}
 body.intro-mode .intro-enter-hint{
   position:absolute;left:50%;bottom:30px;z-index:8;transform:translateX(-50%);
   display:flex;flex-direction:column;align-items:center;gap:2px;pointer-events:none;
@@ -7874,38 +7876,19 @@ function openMap(){
   };
   go();
 }
-$('#globe-open').addEventListener('wheel',e=>{if(Math.abs(e.deltaY)<5)return;e.preventDefault();hideGlobeCountryCard();if(Date.now()-lastWheel>780){lastWheel=Date.now();chooseCountry(state.selected+(e.deltaY>0?1:-1));}},{passive:false});
-$('#prev-country').onclick=()=>chooseCountry(state.selected-1);$('#next-country').onclick=()=>chooseCountry(state.selected+1);
 const globeOpen=$('#globe-open');
+globeOpen.style.cursor='pointer';
 globeOpen.onclick=e=>{
-  if(Date.now()<=suppressClickUntil)return;
   e.preventDefault();
   e.stopPropagation();
-  openMap();
+  location.hash='#map';
 };
-globeOpen.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openMap();}});
-globeOpen.addEventListener('pointerdown',e=>{
-  if(e.button!==0&&e.pointerType==='mouse')return;
-  if(e.target?.closest?.('#globe-point circle,#globe-conflicts .globe-conflict-ring'))return;
-  globeTimer?.stop();hideGlobeCountryCard();globeDragging=false;globePointerId=e.pointerId;globeDragStart=[e.clientX,e.clientY];globeRotateStart=globeProjection.rotate().slice();
-  globeOpen.setPointerCapture?.(e.pointerId);globeOpen.classList.add('grabbing');
+globeOpen.addEventListener('keydown',e=>{
+  if(e.key==='Enter'||e.key===' '){
+    e.preventDefault();
+    location.hash='#map';
+  }
 });
-globeOpen.addEventListener('pointermove',e=>{
-  if(e.pointerId!==globePointerId||!globeDragStart)return;
-  const dx=e.clientX-globeDragStart[0],dy=e.clientY-globeDragStart[1];
-  if(!globeDragging&&Math.hypot(dx,dy)<4)return;
-  globeDragging=true;suppressClickUntil=Date.now()+500;e.preventDefault();
-  const rect=globeOpen.getBoundingClientRect(),sensitivity=180/Math.max(320,Math.min(rect.width,rect.height));
-  const lon=globeRotateStart[0]+dx*sensitivity,lat=Math.max(-80,Math.min(80,globeRotateStart[1]-dy*sensitivity));
-  globeProjection.rotate([lon,lat,globeRotateStart[2]||0]);drawGlobe();
-});
-function endGlobeDrag(e){
-  if(e.pointerId!==globePointerId)return;
-  if(globeDragging)suppressClickUntil=Date.now()+500;
-  try{globeOpen.releasePointerCapture?.(e.pointerId);}catch{}
-  globeOpen.classList.remove('grabbing');globePointerId=null;globeDragStart=null;globeRotateStart=null;globeDragging=false;
-}
-globeOpen.addEventListener('pointerup',endGlobeDrag);globeOpen.addEventListener('pointercancel',endGlobeDrag);
 document.querySelectorAll('[data-globe-conflict]').forEach(button=>button.onclick=()=>{const conflict=CONFLICTS.find(c=>c.id===button.dataset.globeConflict);if(conflict)showConflict(conflict.id);});
 document.querySelectorAll('[data-space-topic]').forEach(button=>button.onclick=()=>showSpaceTopic(button.dataset.spaceTopic));
 function title(kicker,heading,subtitle){return `<div class="page-title"><div><span class="eyebrow">${kicker}</span><h1>${heading}</h1><p>${subtitle}</p></div><button onclick="location.hash='map'">세계지도 ↗</button></div>`;}
