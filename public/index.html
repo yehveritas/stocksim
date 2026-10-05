@@ -279,7 +279,7 @@ body.intro-mode .satellite-earth:before{
 }
 body.intro-mode .satellite-earth:after{
   content:"";position:absolute;inset:0;
-  background:radial-gradient(circle at 50% 54%,transparent 0 25%,rgba(0,0,0,.05) 37%,rgba(0,0,0,.28) 60%,rgba(0,0,0,.58) 100%)
+  background:radial-gradient(circle at 50% 54%,transparent 0 29%,rgba(0,0,0,.03) 43%,rgba(0,0,0,.18) 67%,rgba(0,0,0,.48) 100%)
 }
 body.intro-mode .earth-atmosphere{display:none!important}
 #earth-3d{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;opacity:0;transition:opacity .9s ease}
@@ -8411,12 +8411,17 @@ if(canvas&&host){
     const clouds=new THREE.Mesh(new THREE.SphereGeometry(5.54,160,160),new THREE.MeshPhongMaterial({map:cloudsMap,transparent:true,opacity:.37,depthWrite:false,blending:THREE.NormalBlending}));
     clouds.rotation.copy(earth.rotation);group.add(clouds);
 
-    const atmosphere=new THREE.Mesh(new THREE.SphereGeometry(5.67,160,160),new THREE.ShaderMaterial({side:THREE.BackSide,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,uniforms:{glowColor:{value:new THREE.Color(0xcfeeff)},intensity:{value:.78}},vertexShader:`varying vec3 vNormal; varying vec3 vWorldPosition; void main(){vNormal=normalize(normalMatrix*normal);vec4 wp=modelMatrix*vec4(position,1.0);vWorldPosition=wp.xyz;gl_Position=projectionMatrix*viewMatrix*wp;}`,fragmentShader:`varying vec3 vNormal; varying vec3 vWorldPosition; uniform vec3 glowColor; uniform float intensity; void main(){vec3 viewDir=normalize(cameraPosition-vWorldPosition);float fresnel=pow(1.0-max(dot(viewDir,vNormal),0.0),3.75);gl_FragColor=vec4(glowColor,fresnel*intensity);}`}));
+    const atmosphere=new THREE.Mesh(new THREE.SphereGeometry(5.57,192,192),new THREE.ShaderMaterial({
+      side:THREE.BackSide,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,
+      uniforms:{glowColor:{value:new THREE.Color(0x9fdcff)},intensity:{value:.40}},
+      vertexShader:`varying vec3 vNormal; varying vec3 vWorldPosition; void main(){vNormal=normalize(normalMatrix*normal);vec4 wp=modelMatrix*vec4(position,1.0);vWorldPosition=wp.xyz;gl_Position=projectionMatrix*viewMatrix*wp;}`,
+      fragmentShader:`varying vec3 vNormal; varying vec3 vWorldPosition; uniform vec3 glowColor; uniform float intensity; void main(){vec3 viewDir=normalize(cameraPosition-vWorldPosition);float edge=1.0-max(dot(viewDir,vNormal),0.0);float core=pow(edge,5.6);float haze=pow(edge,2.2)*.12;float alpha=(core+haze)*intensity;gl_FragColor=vec4(glowColor,alpha);}`
+    }));
     atmosphere.rotation.copy(earth.rotation);group.add(atmosphere);
 
     const sun=new THREE.DirectionalLight(0xfff7ed,2.85);sun.position.set(-5.8,4.9,7.8);scene.add(sun);
     scene.add(new THREE.AmbientLight(0x71808f,.13));
-    const rim=new THREE.DirectionalLight(0xd8f3ff,.62);rim.position.set(7.5,.3,-4.5);scene.add(rim);
+    const rim=new THREE.DirectionalLight(0xbfe9ff,.22);rim.position.set(7.5,.2,-5.2);scene.add(rim);
 
     const starCount=720,positions=new Float32Array(starCount*3);
     for(let i=0;i<starCount;i++){const radius=42+Math.random()*95,theta=Math.random()*Math.PI*2,phi=Math.acos(2*Math.random()-1);positions[i*3]=radius*Math.sin(phi)*Math.cos(theta);positions[i*3+1]=radius*Math.cos(phi);positions[i*3+2]=radius*Math.sin(phi)*Math.sin(theta)}
