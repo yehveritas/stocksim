@@ -7863,39 +7863,37 @@ function chooseCountry(index,animate=true){
  if(state.route==='map'){updateMapSelection();renderCountryPanel();}
 }
 function chooseById(id){const index=COUNTRIES.findIndex(c=>c.id===id);if(index<0)return false;chooseCountry(index);return true;}
-async function openMap(){
+function openMap(){
   if(opening)return;
   opening=true;
-  $('#intro').classList.add('launching');
-  await new Promise(r=>setTimeout(r,matchMedia('(prefers-reduced-motion: reduce)').matches?0:360));
-  if(location.hash!=='#map')location.hash='map';
-  else navigate();
-  opening=false;
+  hideGlobeCountryCard();
+  const go=()=>{
+    if(location.hash!=='#map')location.hash='#map';
+    else navigate();
+    opening=false;
+  };
+  go();
 }
 $('#globe-open').addEventListener('wheel',e=>{if(Math.abs(e.deltaY)<5)return;e.preventDefault();hideGlobeCountryCard();if(Date.now()-lastWheel>780){lastWheel=Date.now();chooseCountry(state.selected+(e.deltaY>0?1:-1));}},{passive:false});
 $('#prev-country').onclick=()=>chooseCountry(state.selected-1);$('#next-country').onclick=()=>chooseCountry(state.selected+1);
 const globeOpen=$('#globe-open');
 let introClickStamp=0;
-globeOpen.onclick=e=>{
+function activateIntroMap(e){
+  if(e){e.preventDefault();e.stopPropagation();}
+  introClickStamp=0;
+  openMap();
+}
+globeOpen.addEventListener('click',e=>{
   if(Date.now()<=suppressClickUntil)return;
   const now=Date.now();
-  if(now-introClickStamp<480){
-    introClickStamp=0;
-    e.preventDefault();
-    hideGlobeCountryCard();
-    openMap();
+  if(e.detail>=2||now-introClickStamp<500){
+    activateIntroMap(e);
     return;
   }
   introClickStamp=now;
-};
-globeOpen.addEventListener('dblclick',e=>{
-  if(Date.now()<=suppressClickUntil)return;
-  introClickStamp=0;
-  e.preventDefault();
-  e.stopPropagation();
-  hideGlobeCountryCard();
-  openMap();
 },{capture:true});
+globeOpen.addEventListener('dblclick',activateIntroMap,{capture:true});
+globeOpen.addEventListener('auxclick',e=>e.preventDefault());
 globeOpen.addEventListener('pointerdown',e=>{
   if(e.button!==0&&e.pointerType==='mouse')return;
   if(e.target?.closest?.('#globe-point circle,#globe-conflicts .globe-conflict-ring'))return;
