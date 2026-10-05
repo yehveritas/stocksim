@@ -7893,6 +7893,7 @@ globeOpen.addEventListener('click',e=>{
   introClickStamp=now;
 },{capture:true});
 globeOpen.addEventListener('dblclick',activateIntroMap,{capture:true});
+globeOpen.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openMap();}});
 globeOpen.addEventListener('auxclick',e=>e.preventDefault());
 globeOpen.addEventListener('pointerdown',e=>{
   if(e.button!==0&&e.pointerType==='mouse')return;
@@ -7912,8 +7913,19 @@ globeOpen.addEventListener('pointermove',e=>{
 function endGlobeDrag(e){
   if(e.pointerId!==globePointerId)return;
   const wasDragging=globeDragging;
-  if(wasDragging)suppressClickUntil=Date.now()+500;
-  if(e.pointerType==='touch'&&!wasDragging){const now=Date.now();if(now-lastGlobeTap<480){suppressClickUntil=now+700;lastGlobeTap=0;hideGlobeCountryCard();openMap();}else{lastGlobeTap=now;flashGlobeDetailHint();}}
+  const now=Date.now();
+  if(wasDragging){
+    suppressClickUntil=now+500;
+  }else{
+    if(now-lastGlobeTap<520){
+      lastGlobeTap=0;
+      suppressClickUntil=now+180;
+      openMap();
+    }else{
+      lastGlobeTap=now;
+      if(e.pointerType==='touch')flashGlobeDetailHint();
+    }
+  }
   try{globeOpen.releasePointerCapture?.(e.pointerId);}catch{}
   globeOpen.classList.remove('grabbing');globePointerId=null;globeDragStart=null;globeRotateStart=null;globeDragging=false;
 }
