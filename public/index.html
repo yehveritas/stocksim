@@ -208,32 +208,30 @@ body.intro-mode #globe{position:absolute;width:1px;height:1px;opacity:0;pointer-
 @media(prefers-reduced-motion:reduce){.satellite-earth{animation:none}}
 
 
-/* v55 — cinematic 3D Earth */
+/* v56 — cinematic close-up Earth */
 body.intro-mode{background:#000;overflow:hidden}
-body.intro-mode .header{z-index:80;padding:34px 38px;background:none}
-body.intro-mode .header .brand{width:auto;display:inline-flex;flex-direction:column;align-items:flex-start;gap:5px;filter:none;color:#f4f7fb}
-body.intro-mode .header .brand svg{width:118px;height:66px;overflow:visible}
-body.intro-mode .header .brand svg text{font-family:Inter,"Helvetica Neue",Arial,sans-serif!important;font-size:66px!important;font-weight:500!important;letter-spacing:-4px;fill:#f5f7fb}
-body.intro-mode .header .brand-sub{font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-size:12px;font-weight:500;letter-spacing:.115em;line-height:1.25;color:rgba(236,242,250,.82);text-shadow:0 2px 20px rgba(0,0,0,.7);white-space:nowrap}
-body.intro-mode #intro{position:relative;display:block;width:100vw;height:100svh;min-height:100svh;padding:0;overflow:hidden;background:radial-gradient(ellipse at 67% 50%,#07101a 0,#020409 34%,#000 72%)}
-body.intro-mode #intro:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:
-radial-gradient(circle at 8% 18%,rgba(255,255,255,.70) 0 .65px,transparent .9px),
-radial-gradient(circle at 21% 72%,rgba(168,200,236,.65) 0 .7px,transparent 1px),
-radial-gradient(circle at 86% 12%,rgba(255,255,255,.60) 0 .55px,transparent .9px),
-radial-gradient(circle at 72% 82%,rgba(151,190,230,.55) 0 .7px,transparent 1px),
-radial-gradient(circle at 45% 28%,rgba(255,255,255,.45) 0 .55px,transparent .9px);background-size:290px 290px,370px 370px,430px 430px,510px 510px,610px 610px;opacity:.38}
-body.intro-mode #intro:after{content:"";position:absolute;inset:0;z-index:7;pointer-events:none;background:radial-gradient(ellipse at 70% 54%,transparent 0 40%,rgba(0,0,0,.08) 58%,rgba(0,0,0,.52) 100%)}
-body.intro-mode .intro-layout,body.intro-mode .globe-wrap{position:absolute;inset:0;width:100%;height:100%;margin:0;display:block;z-index:2}
-body.intro-mode .globe-button{position:absolute;inset:0;width:100vw;height:100svh;aspect-ratio:auto;border:0;border-radius:0;padding:0;margin:0;background:transparent;overflow:hidden;filter:none;cursor:default;touch-action:manipulation}
+body.intro-mode .header{position:fixed;inset:0 0 auto 0;z-index:80;padding:34px 30px;background:linear-gradient(180deg,rgba(0,0,0,.30),transparent 78%);pointer-events:none}
+body.intro-mode .header .brand{width:auto;display:inline-flex;flex-direction:column;align-items:flex-start;gap:7px;pointer-events:auto;filter:none;color:#f5f8fc}
+body.intro-mode .header .brand svg{width:126px;height:68px;overflow:visible}
+body.intro-mode .header .brand svg text{font-family:Inter,"Helvetica Neue",Arial,sans-serif!important;font-size:66px!important;font-weight:500!important;letter-spacing:-4.4px;fill:#f7fbff}
+body.intro-mode .header .brand-sub{font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-size:13px;font-weight:500;letter-spacing:.045em;line-height:1.45;color:rgba(243,248,255,.90);text-shadow:0 2px 10px rgba(0,0,0,.30)}
+body.intro-mode .header .account{display:none!important}
+body.intro-mode #intro{height:100svh;min-height:100svh;padding:0;overflow:hidden;position:relative;background:radial-gradient(circle at 78% 44%,rgba(46,105,190,.11),transparent 21%),radial-gradient(circle at 18% 16%,rgba(170,205,255,.045),transparent 16%),linear-gradient(180deg,#01030a 0%,#01060d 44%,#000 100%)}
+body.intro-mode #intro:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 60% 48%,transparent 0 31%,rgba(0,0,0,.12) 49%,rgba(0,0,0,.46) 78%,rgba(0,0,0,.73) 100%)}
+body.intro-mode .intro-top,body.intro-mode .globe-title,body.intro-mode .globe-controls,body.intro-mode .intro-card,body.intro-mode .intro-foot,body.intro-mode .globe-country-popover,body.intro-mode .globe-detail-hint,body.intro-mode .globe-conflict-links,body.intro-mode .space-policy-links,body.intro-mode .space-asset{display:none!important}
+body.intro-mode .intro-layout{display:block;width:100vw;height:100svh;min-height:100svh;margin:0;max-width:none;position:relative;z-index:2}
+body.intro-mode .globe-wrap{width:100%;height:100%;margin:0!important;display:block}
+body.intro-mode .globe-button{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0;padding:0;margin:0;background:transparent;overflow:hidden;filter:none;cursor:default;touch-action:manipulation}
 body.intro-mode .globe-button:focus{outline:none}
-body.intro-mode .satellite-earth{position:absolute;inset:0;display:block;width:100%;height:100%;border-radius:0;opacity:1;background:#010308 url('https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57730/land_ocean_ice_2048.jpg') center/cover no-repeat;animation:none;transition:opacity .8s ease;box-shadow:none;filter:saturate(.92) contrast(1.06)}
-body.intro-mode .satellite-earth:before,body.intro-mode .satellite-earth:after,body.intro-mode .earth-atmosphere{display:none}
-#earth-3d{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;opacity:0;transition:opacity 1.1s ease}
+body.intro-mode .satellite-earth{position:absolute;inset:0;display:block;width:100%;height:100%;border-radius:0;opacity:1;background:radial-gradient(circle at 72% 42%,rgba(100,190,255,.12),transparent 18%),linear-gradient(180deg,#01030a 0%,#020812 45%,#000 100%);transition:opacity .8s ease}
+body.intro-mode .satellite-earth:before{content:"";position:absolute;inset:-5% -18% -12% 39%;border-radius:50%;background:url('https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57730/land_ocean_ice_2048.jpg') center/cover no-repeat;box-shadow:0 0 22px rgba(134,214,255,.26),0 0 90px rgba(61,132,255,.12);filter:saturate(.94) contrast(1.06);transform:rotate(-20deg)}
+body.intro-mode .satellite-earth:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 77% 44%,transparent 0 27%,rgba(0,0,0,.10) 42%,rgba(0,0,0,.58) 76%,rgba(0,0,0,.86) 100%)}
+body.intro-mode .earth-atmosphere{display:none!important}
+#earth-3d{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;opacity:0;transition:opacity .9s ease}
 body.earth-webgl-ready #earth-3d{opacity:1}
 body.earth-webgl-ready .satellite-earth{opacity:0}
 body.intro-mode #globe{display:none!important}
-body.intro-mode .intro-top,body.intro-mode .globe-title,body.intro-mode .globe-controls,body.intro-mode .intro-card,body.intro-mode .intro-foot,body.intro-mode .globe-country-popover,body.intro-mode .globe-detail-hint,body.intro-mode .globe-conflict-links,body.intro-mode .space-policy-links,body.intro-mode .space-asset{display:none!important}
-@media(max-width:700px){body.intro-mode .header{padding:24px 22px}body.intro-mode .header .brand svg{width:92px;height:54px}body.intro-mode .header .brand svg text{font-size:58px!important;letter-spacing:-3px}body.intro-mode .header .brand-sub{font-size:10px;letter-spacing:.075em;max-width:82vw;white-space:normal}}
+@media(max-width:700px){body.intro-mode .header{padding:26px 22px}body.intro-mode .header .brand svg{width:104px;height:58px}body.intro-mode .header .brand svg text{font-size:58px!important;letter-spacing:-3.5px}body.intro-mode .header .brand-sub{font-size:11px;line-height:1.5;max-width:82vw;white-space:normal}body.intro-mode .satellite-earth:before{inset:0 -42% -4% 18%;transform:rotate(-17deg)}}
 @media(prefers-reduced-motion:reduce){#earth-3d{transition:none}}
 </style>
 <meta name="robots" content="index, follow">
@@ -897,9 +895,9 @@ const ATLAS_DATA={
       "food": false,
       "africaFood": false,
       "oilProductionKbd": 1800.0327350900516,
-      "source": "https://www.eia.gov/international/data/world"    },
-    {
-      "id": "CHN",
+      "source": "https://www.eia.gov/international/data/world"
+    },
+    {      "id": "CHN",
       "name": "중국",
       "en": "People's Republic of China",
       "point": [
@@ -1796,9 +1794,9 @@ const ATLAS_DATA={
       "group": "green",
       "oil": true,
       "food": false,
-      "africaFood": false,      "oilProductionKbd": 86.72676986135923,
-      "source": "https://www.eia.gov/international/data/world"
-    },
+      "africaFood": false,
+      "oilProductionKbd": 86.72676986135923,
+      "source": "https://www.eia.gov/international/data/world"    },
     {
       "id": "GRC",
       "name": "그리스",
@@ -2695,9 +2693,9 @@ const ATLAS_DATA={
     },
     {
       "id": "USA-XOM",
-      "country": "USA",      "ticker": "XOM",
-      "name": "ExxonMobil",
-      "sector": "에너지",
+      "country": "USA",
+      "ticker": "XOM",
+      "name": "ExxonMobil",      "sector": "에너지",
       "annual": null,
       "quote": null,
       "links": [],
@@ -3594,9 +3592,9 @@ const ATLAS_DATA={
     },
     {
       "id": "IRN-NIOC",
-      "country": "IRN",      "ticker": "NIOC",
-      "name": "National Iranian Oil Company",
-      "sector": "비상장·국영",
+      "country": "IRN",
+      "ticker": "NIOC",
+      "name": "National Iranian Oil Company",      "sector": "비상장·국영",
       "annual": null,
       "quote": null,
       "links": [],
@@ -4493,9 +4491,9 @@ for (const company of EXPANDED_CORE_COMPANIES) {
 
 
 
+
 // Expanded company coverage for the remaining 55 atlas countries.
-// Public tickers are included only when known; state/private entities are labeled transparently.
-const EXPANDED_GLOBAL_COMPANIES = [
+// Public tickers are included only when known; state/private entities are labeled transparently.const EXPANDED_GLOBAL_COMPANIES = [
   ["ALB-BANKAKOMBTAR","ALB","비상장","Banka Kombëtare Tregtare","금융",false,"비상장",false],
   ["ALB-BALFINGROUP","ALB","비상장","BALFIN Group","산업재",false,"비상장",false],
   ["ALB-KASTRATIGROU","ALB","비상장","Kastrati Group","에너지",false,"비상장",false],
@@ -5392,9 +5390,9 @@ for(const company of ATLAS_DATA.companies.filter(c=>c.country==='KOR')){
 // The default relation type in this pass is a cross-border product-market comparison group.
 // It must not be read as evidence of a direct contract, supplier, customer or ownership relation.
 const MARKET_AUDIT_COUNTRIES_V12 = new Set(['USA','JPN','CHN','TWN']);
-const MARKET_GROUPS_V12 = [  ['AI·GPU·반도체 설계',['NVIDIA','AMD','Advanced Micro Devices','Broadcom','Qualcomm','MediaTek','Renesas Electronics','Texas Instruments']],
-  ['파운드리',['TSMC','삼성전자','SMIC','UMC','Intel']],
-  ['반도체 장비·테스트',['Tokyo Electron','ASML','Advantest','한미반도체','ASM International','BE Semiconductor Industries']],
+const MARKET_GROUPS_V12 = [
+  ['AI·GPU·반도체 설계',['NVIDIA','AMD','Advanced Micro Devices','Broadcom','Qualcomm','MediaTek','Renesas Electronics','Texas Instruments']],
+  ['파운드리',['TSMC','삼성전자','SMIC','UMC','Intel']],  ['반도체 장비·테스트',['Tokyo Electron','ASML','Advantest','한미반도체','ASM International','BE Semiconductor Industries']],
   ['전자 제조·조립',['Hon Hai','Luxshare Precision','Foxconn Industrial Internet','Quanta Computer','Apple','삼성전자']],
   ['전자부품·광학',['Murata Manufacturing','Largan Precision','삼성전기','Sony','Canon','Fujifilm Holdings']],
   ['소비자 전자·가전',['Apple','Sony','Panasonic Holdings','LG전자','Midea Group','Gree Electric','Haier Smart Home','TCL Technology']],
@@ -6291,9 +6289,9 @@ Object.assign(ATLAS_DATA.sources, {
     ['Hitachi','Google','hitachiGoogle2024','전략 협력','Gemini·Google Cloud 기반 생성형 AI 사업 협력'],
     ['Denso','Qualcomm','densoQualcomm2020','공동개발','차세대 자동차 콕핏 시스템 공동개발'],
     ['General Motors','Honda','gmHondaFuelCell2017','JV','수소연료전지 시스템 제조 합작'],
-    ['Fujitsu','NVIDIA','fujitsuNvidia2021','기술 협력','AI-on-5G·Open RAN 가속컴퓨팅 협력'],    ['Panasonic','Tesla','panasonicTesla2016','공급망·생산 협력','EV·에너지저장 배터리 및 태양광 생산 협력']
-  ];
-  const add=(a,b,s,k,l)=>{
+    ['Fujitsu','NVIDIA','fujitsuNvidia2021','기술 협력','AI-on-5G·Open RAN 가속컴퓨팅 협력'],
+    ['Panasonic','Tesla','panasonicTesla2016','공급망·생산 협력','EV·에너지저장 배터리 및 태양광 생산 협력']
+  ];  const add=(a,b,s,k,l)=>{
     const from=find(a),to=find(b); if(!from||!to)return false;
     const edge={target:to.country,targetCompany:to.id,label:`${to.name} · ${l}`,kind:k,source:s,verified:true};
     const rest=(from.links||[]).filter(x=>x.targetCompany!==to.id);
@@ -7191,8 +7189,8 @@ Object.assign(ATLAS_DATA.sources, {
   let added=0,matched=[];for(const r of rels){const a=add(...r),b=add(r[1],r[0],r[2],r[3],r[4]);if(a)added++;if(b)added++;matched.push({pair:`${r[0]} ↔ ${r[1]}`,forward:a,reverse:b,source:r[2]});}
   ATLAS_DATA.meta.sourceRelationshipPass='v34';ATLAS_DATA.meta.sourceRelationshipEdgesAdded=(ATLAS_DATA.meta.sourceRelationshipEdgesAdded||0)+added;ATLAS_DATA.meta.sourceRelationshipV34={added,matched};
 }
-// v34 quality fix: merge exact duplicate country/company nodes (e.g. CATL, BYD dual listings) into one canonical company node.
-{
+
+// v34 quality fix: merge exact duplicate country/company nodes (e.g. CATL, BYD dual listings) into one canonical company node.{
   const norm=v=>String(v||'').toLowerCase().replace(/[^a-z0-9가-힣]+/g,'');
   const groups=new Map();
   for(const c of ATLAS_DATA.companies){const k=`${c.country}|${norm(c.name)}`;(groups.get(k)||groups.set(k,[]).get(k)).push(c);}
@@ -8089,9 +8087,9 @@ const PRODUCT_FLOWS={
   {id:'existing',q:'현재 다른 금융회사에 ISA 계좌가 있나요?',type:'choice',options:['없어요','있어요','잘 모르겠어요']},
   {id:'period',q:'이 자금을 얼마나 오래 운용할 수 있나요?',type:'choice',options:['1년 미만','1~3년','3~5년','5년 이상']},
   {id:'risk',q:'원금이 일시적으로 줄어드는 상황을 어느 정도 받아들일 수 있나요?',type:'choice',options:['원금 변동을 거의 원하지 않아요','작은 변동은 괜찮아요','중간 정도 위험을 감수할 수 있어요','수익을 위해 큰 변동도 감수할 수 있어요']},
-  {id:'style',q:'관심 있는 운용방식을 골라주세요.',type:'multi',options:['예금성 상품','채권','펀드','ETF','배당·인컴','잘 모르겠어요']} ]},
- retirement:{label:'퇴직연금',desc:'DB · DC · IRP와 노후 준비',questions:[
-  {id:'type',q:'현재 퇴직연금 유형을 알고 계신가요?',type:'choice',options:['DB형','DC형','개인형 IRP','여러 개 보유','잘 모르겠어요']},
+  {id:'style',q:'관심 있는 운용방식을 골라주세요.',type:'multi',options:['예금성 상품','채권','펀드','ETF','배당·인컴','잘 모르겠어요']}
+ ]},
+ retirement:{label:'퇴직연금',desc:'DB · DC · IRP와 노후 준비',questions:[  {id:'type',q:'현재 퇴직연금 유형을 알고 계신가요?',type:'choice',options:['DB형','DC형','개인형 IRP','여러 개 보유','잘 모르겠어요']},
   {id:'horizon',q:'은퇴까지 남은 기간은 어느 정도인가요?',type:'choice',options:['5년 이내','5~10년','10~20년','20년 이상']},
   {id:'contribution',q:'추가로 납입할 계획이 있나요?',type:'choice',options:['매월 추가 납입','연말에 여유자금 납입','현재 적립금만 운용','아직 정하지 않았어요']},
   {id:'risk',q:'퇴직자산 운용에서 어느 쪽에 더 가깝나요?',type:'choice',options:['원리금보장 중심','안정형 혼합','성장형 혼합','적극 투자형']},
@@ -8270,4 +8268,70 @@ setInterval(refreshNews,10*60*1000);
 
 setInterval(refreshLive,3600000);
 
-navigate();refreshFx();refreshLive();refreshNews();</script>\n<script type="module">\nimport * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js';\n\nconst canvas=document.getElementById('earth-3d');\nconst host=document.getElementById('globe-open');\nif(canvas&&host){\n  try{\n    const scene=new THREE.Scene();\n    const camera=new THREE.PerspectiveCamera(31,innerWidth/innerHeight,0.1,100);\n    camera.position.set(0,0,7.25);\n\n    const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'});\n    renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));\n    renderer.setSize(innerWidth,innerHeight,false);\n    renderer.outputColorSpace=THREE.SRGBColorSpace;\n    renderer.toneMapping=THREE.ACESFilmicToneMapping;\n    renderer.toneMappingExposure=1.04;\n\n    const group=new THREE.Group();\n    scene.add(group);\n\n    const loader=new THREE.TextureLoader();\n    loader.setCrossOrigin('anonymous');\n    const load=(url)=>new Promise((resolve,reject)=>loader.load(url,resolve,undefined,reject));\n    const [day,specular,normal,cloudsMap]=await Promise.all([\n      load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg'),\n      load('https://threejs.org/examples/textures/planets/earth_specular_2048.jpg'),\n      load('https://threejs.org/examples/textures/planets/earth_normal_2048.jpg'),\n      load('https://threejs.org/examples/textures/planets/earth_clouds_1024.png')\n    ]);\n    day.colorSpace=THREE.SRGBColorSpace;\n    day.anisotropy=renderer.capabilities.getMaxAnisotropy();\n\n    const earthGeo=new THREE.SphereGeometry(3.15,128,128);\n    const earthMat=new THREE.MeshPhongMaterial({\n      map:day,\n      specularMap:specular,\n      normalMap:normal,\n      normalScale:new THREE.Vector2(.48,.48),\n      specular:new THREE.Color(0x496a8a),\n      shininess:13\n    });\n    const earth=new THREE.Mesh(earthGeo,earthMat);\n    earth.rotation.z=THREE.MathUtils.degToRad(-23.4);\n    earth.rotation.y=THREE.MathUtils.degToRad(-112);\n    group.add(earth);\n\n    const cloudGeo=new THREE.SphereGeometry(3.18,128,128);\n    const cloudMat=new THREE.MeshPhongMaterial({map:cloudsMap,transparent:true,opacity:.34,depthWrite:false,blending:THREE.NormalBlending});\n    const clouds=new THREE.Mesh(cloudGeo,cloudMat);\n    clouds.rotation.copy(earth.rotation);\n    group.add(clouds);\n\n    const atmosphere=new THREE.Mesh(\n      new THREE.SphereGeometry(3.27,128,128),\n      new THREE.ShaderMaterial({\n        side:THREE.BackSide,\n        transparent:true,\n        blending:THREE.AdditiveBlending,\n        depthWrite:false,\n        uniforms:{glowColor:{value:new THREE.Color(0x62c5ff)},intensity:{value:.78}},\n        vertexShader:`varying vec3 vNormal; varying vec3 vWorldPosition; void main(){vNormal=normalize(normalMatrix*normal);vec4 wp=modelMatrix*vec4(position,1.0);vWorldPosition=wp.xyz;gl_Position=projectionMatrix*viewMatrix*wp;}`,\n        fragmentShader:`varying vec3 vNormal; varying vec3 vWorldPosition; uniform vec3 glowColor; uniform float intensity; void main(){vec3 viewDir=normalize(cameraPosition-vWorldPosition);float fresnel=pow(1.0-max(dot(viewDir,vNormal),0.0),3.0);gl_FragColor=vec4(glowColor,fresnel*intensity);}`\n      })\n    );\n    atmosphere.rotation.z=earth.rotation.z;\n    group.add(atmosphere);\n\n    const sun=new THREE.DirectionalLight(0xffffff,2.55);\n    sun.position.set(-5.2,3.3,6.5);\n    scene.add(sun);\n    scene.add(new THREE.AmbientLight(0x173149,.16));\n    const rim=new THREE.DirectionalLight(0x6fc7ff,.34);\n    rim.position.set(5,-1,-4);\n    scene.add(rim);\n\n    const starCount=1250;\n    const starPositions=new Float32Array(starCount*3);\n    for(let i=0;i<starCount;i++){\n      const radius=32+Math.random()*58;\n      const theta=Math.random()*Math.PI*2;\n      const phi=Math.acos(2*Math.random()-1);\n      starPositions[i*3]=radius*Math.sin(phi)*Math.cos(theta);\n      starPositions[i*3+1]=radius*Math.cos(phi);\n      starPositions[i*3+2]=radius*Math.sin(phi)*Math.sin(theta);\n    }\n    const starsGeo=new THREE.BufferGeometry();\n    starsGeo.setAttribute('position',new THREE.BufferAttribute(starPositions,3));\n    const stars=new THREE.Points(starsGeo,new THREE.PointsMaterial({color:0xbfd8ee,size:.034,transparent:true,opacity:.72,sizeAttenuation:true}));\n    scene.add(stars);\n\n    const place=()=>{\n      const mobile=innerWidth<760;\n      camera.aspect=innerWidth/innerHeight;\n      camera.updateProjectionMatrix();\n      renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));\n      renderer.setSize(innerWidth,innerHeight,false);\n      if(mobile){\n        camera.fov=35;camera.position.z=8.3;camera.updateProjectionMatrix();\n        group.position.set(.95,-.62,-.05);\n        group.scale.setScalar(1.08);\n      }else{\n        camera.fov=31;camera.position.z=7.25;camera.updateProjectionMatrix();\n        group.position.set(1.62,-.58,-.12);\n        group.scale.setScalar(1.18);\n      }\n    };\n    place();\n    addEventListener('resize',place,{passive:true});\n\n    let drag=false,lastX=0,lastY=0;\n    host.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;drag=true;lastX=e.clientX;lastY=e.clientY;});\n    host.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;earth.rotation.y+=dx*.0022;earth.rotation.x=Math.max(-.35,Math.min(.35,earth.rotation.x+dy*.0012));clouds.rotation.y+=dx*.0022;});\n    const stop=()=>{drag=false};host.addEventListener('pointerup',stop);host.addEventListener('pointercancel',stop);host.addEventListener('pointerleave',stop);\n\n    document.body.classList.add('earth-webgl-ready');\n    let last=performance.now();\n    const animate=(now)=>{\n      const dt=Math.min(.05,(now-last)/1000||0);last=now;\n      if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!drag){\n        earth.rotation.y+=dt*.022;\n        clouds.rotation.y+=dt*.026;\n      }\n      stars.rotation.y+=dt*.00045;\n      renderer.render(scene,camera);\n      requestAnimationFrame(animate);\n    };\n    requestAnimationFrame(animate);\n  }catch(err){console.warn('3E Earth fallback active',err);}\n}\n</script>\n</body></html>
+navigate();refreshFx();refreshLive();refreshNews();</script>\n<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js';
+
+const canvas=document.getElementById('earth-3d');
+const host=document.getElementById('globe-open');
+if(canvas&&host){
+  try{
+    const scene=new THREE.Scene();
+    const camera=new THREE.PerspectiveCamera(27,innerWidth/innerHeight,.1,220);
+    const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'});
+    renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));
+    renderer.setSize(innerWidth,innerHeight,false);
+    renderer.outputColorSpace=THREE.SRGBColorSpace;
+    renderer.toneMapping=THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure=1.08;
+
+    const group=new THREE.Group();scene.add(group);
+    const loader=new THREE.TextureLoader();loader.setCrossOrigin('anonymous');
+    const load=url=>new Promise((resolve,reject)=>loader.load(url,resolve,undefined,reject));
+    const [day,specular,normal,cloudsMap]=await Promise.all([
+      load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg'),
+      load('https://threejs.org/examples/textures/planets/earth_specular_2048.jpg'),
+      load('https://threejs.org/examples/textures/planets/earth_normal_2048.jpg'),
+      load('https://threejs.org/examples/textures/planets/earth_clouds_1024.png')
+    ]);
+    day.colorSpace=THREE.SRGBColorSpace;day.anisotropy=renderer.capabilities.getMaxAnisotropy();
+
+    const earth=new THREE.Mesh(new THREE.SphereGeometry(5.45,160,160),new THREE.MeshPhongMaterial({map:day,specularMap:specular,normalMap:normal,normalScale:new THREE.Vector2(.55,.55),specular:new THREE.Color(0x587895),shininess:15}));
+    earth.rotation.set(THREE.MathUtils.degToRad(8),THREE.MathUtils.degToRad(145),THREE.MathUtils.degToRad(23.5));
+    group.add(earth);
+
+    const clouds=new THREE.Mesh(new THREE.SphereGeometry(5.54,160,160),new THREE.MeshPhongMaterial({map:cloudsMap,transparent:true,opacity:.37,depthWrite:false,blending:THREE.NormalBlending}));
+    clouds.rotation.copy(earth.rotation);group.add(clouds);
+
+    const atmosphere=new THREE.Mesh(new THREE.SphereGeometry(5.67,160,160),new THREE.ShaderMaterial({side:THREE.BackSide,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,uniforms:{glowColor:{value:new THREE.Color(0x63c9ff)},intensity:{value:1.12}},vertexShader:`varying vec3 vNormal; varying vec3 vWorldPosition; void main(){vNormal=normalize(normalMatrix*normal);vec4 wp=modelMatrix*vec4(position,1.0);vWorldPosition=wp.xyz;gl_Position=projectionMatrix*viewMatrix*wp;}`,fragmentShader:`varying vec3 vNormal; varying vec3 vWorldPosition; uniform vec3 glowColor; uniform float intensity; void main(){vec3 viewDir=normalize(cameraPosition-vWorldPosition);float fresnel=pow(1.0-max(dot(viewDir,vNormal),0.0),3.45);gl_FragColor=vec4(glowColor,fresnel*intensity);}`}));
+    atmosphere.rotation.copy(earth.rotation);group.add(atmosphere);
+
+    const sun=new THREE.DirectionalLight(0xffffff,2.5);sun.position.set(-5.8,4.6,7.2);scene.add(sun);
+    scene.add(new THREE.AmbientLight(0x4e6a86,.15));
+    const rim=new THREE.DirectionalLight(0x6bcaff,.38);rim.position.set(7,-1,-5);scene.add(rim);
+
+    const starCount=720,positions=new Float32Array(starCount*3);
+    for(let i=0;i<starCount;i++){const radius=42+Math.random()*95,theta=Math.random()*Math.PI*2,phi=Math.acos(2*Math.random()-1);positions[i*3]=radius*Math.sin(phi)*Math.cos(theta);positions[i*3+1]=radius*Math.cos(phi);positions[i*3+2]=radius*Math.sin(phi)*Math.sin(theta)}
+    const sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.BufferAttribute(positions,3));
+    const stars=new THREE.Points(sg,new THREE.PointsMaterial({color:0xd9e9ff,size:.10,transparent:true,opacity:.34,sizeAttenuation:true}));scene.add(stars);
+
+    const place=()=>{
+      const mobile=innerWidth<760;
+      camera.aspect=innerWidth/innerHeight;
+      if(mobile){camera.fov=30;camera.position.set(-1.05,.18,6.35);group.position.set(2.55,-1.72,-.55);group.scale.setScalar(1.03);renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.8))}
+      else{camera.fov=27;camera.position.set(-1.62,.42,6.15);group.position.set(3.35,-1.36,-.72);group.scale.setScalar(1.0);renderer.setPixelRatio(Math.min(devicePixelRatio||1,2))}
+      camera.lookAt(new THREE.Vector3(.55,-.15,-.6));camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false)
+    };
+    place();addEventListener('resize',place,{passive:true});
+
+    let drag=false,lastX=0,lastY=0;
+    host.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;drag=true;lastX=e.clientX;lastY=e.clientY});
+    host.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;earth.rotation.y+=dx*.0017;earth.rotation.x=Math.max(-.18,Math.min(.18,earth.rotation.x+dy*.0007));clouds.rotation.y+=dx*.0019;clouds.rotation.x=earth.rotation.x;atmosphere.rotation.x=earth.rotation.x});
+    const stop=()=>drag=false;host.addEventListener('pointerup',stop);host.addEventListener('pointercancel',stop);host.addEventListener('pointerleave',stop);
+
+    document.body.classList.add('earth-webgl-ready');
+    let last=performance.now();
+    const animate=now=>{const dt=Math.min(.05,(now-last)/1000||0);last=now;if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!drag){earth.rotation.y+=dt*.0072;clouds.rotation.y+=dt*.0092}stars.rotation.y+=dt*.00012;renderer.render(scene,camera);requestAnimationFrame(animate)};
+    requestAnimationFrame(animate);
+  }catch(err){console.warn('3E Earth fallback active',err)}
+}
+</script>\n</body></html>
