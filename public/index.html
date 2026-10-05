@@ -80,14 +80,18 @@ https://www.naturalearthdata.com/about/terms-of-use/
 .market-strip-head b{font-size:11px;letter-spacing:.18em;color:#d8e8fa}
 .market-strip-head small{font-size:11px;color:#71869e}
 .pulse-dot{width:7px;height:7px;border-radius:50%;background:#55c8a2;box-shadow:0 0 0 4px #55c8a218,0 0 14px #55c8a244;flex:none}
-.market-strip-track{display:flex;gap:0;overflow-x:auto;scrollbar-width:thin;padding:0 4vw;white-space:nowrap}
+.market-strip-track{display:block;overflow:hidden;white-space:nowrap}.market-ticker{display:inline-flex;align-items:stretch;width:max-content;animation:marketTicker 170s linear infinite;will-change:transform}.market-ticker:hover{animation-play-state:paused}@keyframes marketTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .market-chip{min-width:142px;padding:10px 18px 11px;border-right:1px solid #182433;display:grid;grid-template-columns:auto auto;grid-template-rows:auto auto;column-gap:9px;align-items:baseline}
 .market-chip:first-child{border-left:1px solid #182433}
 .market-chip>span{font-size:11px;color:#91a6bd;letter-spacing:.02em}
 .market-chip>b{font-size:15px;font-weight:650;color:#edf6ff;text-align:right;font-variant-numeric:tabular-nums}
 .market-chip>small{grid-column:1/-1;margin-top:2px;font-size:9.5px;color:#536a83;letter-spacing:.01em;overflow:hidden;text-overflow:ellipsis}
 .market-chip.up>b{color:#6fd1ac}.market-chip.down>b{color:#ef8994}
-@media(max-width:720px){.market-strip-head{padding-left:18px;padding-right:18px}.market-strip-track{padding:0 18px}.market-chip{min-width:128px;padding-left:13px;padding-right:13px}.market-chip>b{font-size:14px}}
+@media(max-width:720px){.market-strip-head{padding-left:18px;padding-right:18px}.market-chip{min-width:128px;padding-left:13px;padding-right:13px}.market-chip>b{font-size:14px}}
+
+
+/* v53.4 — compact indicator dashboard */
+.indicator-compact{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #26394b;border-left:1px solid #26394b;margin:18px 0 14px}.indicator-mini{min-height:86px;padding:12px 14px;border-right:1px solid #26394b;border-bottom:1px solid #26394b;background:#0a131d}.indicator-mini span{display:block;font-size:10px;color:#7f95aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.indicator-mini b{display:block;margin-top:5px;font-size:18px;font-weight:650;color:#edf6ff;font-variant-numeric:tabular-nums}.indicator-mini small{display:block;margin-top:5px;font-size:9px;color:#5f768c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.indicator-mini a{color:inherit;text-decoration:none}.indicator-meta{margin-top:16px;border-top:1px solid #223346;padding-top:12px;color:#71879a;font-size:10px}.indicator-meta summary{cursor:pointer;display:inline-flex;gap:7px;align-items:center;color:#8ca2b7}.indicator-meta .live-status{margin-top:10px;border:0;background:#08111a;padding:10px 12px}.indicator-meta .live-status span{display:inline-block;margin:3px 14px 3px 0}.indicator-note{font-size:10px;color:#70869a;line-height:1.65;margin-top:10px}.indicator-section{margin-top:18px}.indicator-section h3{font-size:12px;letter-spacing:.08em;color:#a9bdd0;margin:0 0 8px}@media(max-width:980px){.indicator-compact{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:680px){.indicator-compact{grid-template-columns:repeat(2,minmax(0,1fr))}.indicator-mini{min-height:78px;padding:10px}.indicator-mini b{font-size:16px}}
 
 /* v37: keep the world map and company explorer visible together on laptop/desktop. */
 @media(min-width:881px){
@@ -793,11 +797,11 @@ const ATLAS_DATA={
       "source": "https://www.eia.gov/international/data/world"
     },
     {
-      "id": "IRQ",
-      "name": "이라크",
+      "id": "IRQ",      "name": "이라크",
       "en": "Iraq",
       "point": [
-        44.0,        33.0
+        44.0,
+        33.0
       ],
       "region": "중동",
       "tags": [
@@ -1592,11 +1596,11 @@ const ATLAS_DATA={
         0.142331
       ],
       "region": "Africa",
-      "tags": [
-        "석유 생산",
+      "tags": [        "석유 생산",
         "에너지"
       ],
-      "topic": "공개 통계에서 확인한 석유 생산국",      "core": false,
+      "topic": "공개 통계에서 확인한 석유 생산국",
+      "core": false,
       "group": "green",
       "oil": true,
       "food": false,
@@ -2391,11 +2395,11 @@ const ATLAS_DATA={
       "core": false,
       "group": "green",
       "oil": true,
-      "food": false,
-      "africaFood": false,
+      "food": false,      "africaFood": false,
       "oilProductionKbd": 2.0,
       "source": "https://www.eia.gov/international/data/world"
-    },    {
+    },
+    {
       "id": "TTO",
       "name": "트리니다드 토바고",
       "en": "Trinidad and Tobago",
@@ -3190,11 +3194,11 @@ const ATLAS_DATA={
         "source": "asml",
         "summary": "첨단 공정과 AI·HBM 투자가 ASML의 FY2025 매출 증가를 뒷받침했습니다.",
         "kind": "공시 요약"
-      },
-      "listed": true
+      },      "listed": true
     },
     {
-      "id": "NLD-ADYEN",      "country": "NLD",
+      "id": "NLD-ADYEN",
+      "country": "NLD",
       "ticker": "ADYEN",
       "name": "Adyen",
       "sector": "금융기술",
@@ -3989,11 +3993,11 @@ const ATLAS_DATA={
       "country": "NGA",
       "ticker": "NNPC",
       "name": "NNPC",
-      "sector": "비상장·국영",
-      "annual": null,
+      "sector": "비상장·국영",      "annual": null,
       "quote": null,
       "links": [],
-      "news": null,      "listed": false
+      "news": null,
+      "listed": false
     },
     {
       "id": "DZA-SONATRACH",
@@ -4788,11 +4792,11 @@ const EXPANDED_GLOBAL_COMPANIES_2 = [
   ["BHR-BAHRAINAIRPO-X","BHR","국영","Bahrain Airport Company","운송",false,"국영/비상장",false],
   ["BLR-BELTELECOM-X","BLR","국영","Beltelecom","통신",false,"국영",false],
   ["BLR-GOMSELMASH-X","BLR","국영","Gomselmash","산업재",false,"국영",false],
-  ["BLZ-BELIZEWATERS-X","BLZ","비상장","Belize Water Services","유틸리티",false,"비상장",false],
-  ["BLZ-BELIZENATURA-X","BLZ","비상장","Belize Natural Energy","에너지",false,"비상장",false],
+  ["BLZ-BELIZEWATERS-X","BLZ","비상장","Belize Water Services","유틸리티",false,"비상장",false],  ["BLZ-BELIZENATURA-X","BLZ","비상장","Belize Natural Energy","에너지",false,"비상장",false],
   ["BOL-BANCODECRDIT-X","BOL","비상장","Banco de Crédito de Bolivia","금융",false,"비상장",false],
   ["BOL-BOLIVIANADEA-X","BOL","국영","Boliviana de Aviación","운송",false,"국영",false],
-  ["BRB-CIBCCARIBBEA-X","BRB","비상장","CIBC Caribbean Barbados","금융",false,"비상장",false],  ["BRB-BARBADOSNATI-X","BRB","국영","Barbados National Oil Company","에너지",false,"국영",false],
+  ["BRB-CIBCCARIBBEA-X","BRB","비상장","CIBC Caribbean Barbados","금융",false,"비상장",false],
+  ["BRB-BARBADOSNATI-X","BRB","국영","Barbados National Oil Company","에너지",false,"국영",false],
   ["BRN-UNIFIEDNATIO-X","BRN","국영","Unified National Networks","통신",false,"국영/비상장",false],
   ["BRN-HENGYIINDUST-X","BRN","비상장","Hengyi Industries","에너지",false,"비상장",false],
   ["CMR-DANGOTECEMEN-X","CMR","비상장","Dangote Cement Cameroon","소재",false,"비상장",false],
@@ -5587,11 +5591,11 @@ for(const c of ATLAS_DATA.companies){
 const groupsByCompanyV13=new Map();
 for(const [group,names] of MARKET_GROUPS_V13){
   const members=names.map(n=>nameIndexV13.get(normCompanyNameV10(n))).filter(Boolean);
-  for(const c of members){
-    if(!groupsByCompanyV13.has(c.id)) groupsByCompanyV13.set(c.id,[]);
+  for(const c of members){    if(!groupsByCompanyV13.has(c.id)) groupsByCompanyV13.set(c.id,[]);
     groupsByCompanyV13.get(c.id).push([group,members]);
   }
-}for(const company of ATLAS_DATA.companies.filter(c=>MARKET_AUDIT_COUNTRIES_V13.has(c.country))){
+}
+for(const company of ATLAS_DATA.companies.filter(c=>MARKET_AUDIT_COUNTRIES_V13.has(c.country))){
   const sourceBacked=(company.links||[]).filter(l=>l.source).slice(0,5);
   const links=[...sourceBacked];
   const used=new Set(links.map(l=>l.targetCompany).filter(Boolean));
@@ -6386,11 +6390,11 @@ Object.assign(ATLAS_DATA.sources, {
   poscoGm2017:{url:'https://newsroom.posco.com/en/gm-korea-posco-partnership-innovation/',date:'2017-07-17',label:'POSCO·GM 공식 자료'},
   hdSiemens2023:{url:'https://esg.hd.com/ko/news/682',date:'2023-10-19',label:'HD Hyundai·Siemens 공식 발표'},
   hdPalantir2022:{url:'https://esg.hd.com/ko/news/591',date:'2022-09-21',label:'HD Hyundai·Palantir 공식 발표'},
-  hanwhaOceanLeidos2026:{url:'https://www.hanwha.com/newsroom/news/press-releases/hanwha-ocean-and-leidos-to-strengthen-us-and-allied-naval-shipbuilding.do',date:'2026-04-27',label:'Hanwha Ocean·Leidos 공식 발표'},
-  hanwhaOceanBabcock2026:{url:'https://www.hanwha.com/newsroom/news/press-releases/hanwha-babcock-partnership-to-support-jobs-and-long-term-industrial-benefits-in-canada.do',date:'2026-01-26',label:'Hanwha Ocean·Babcock 공식 발표'},
+  hanwhaOceanLeidos2026:{url:'https://www.hanwha.com/newsroom/news/press-releases/hanwha-ocean-and-leidos-to-strengthen-us-and-allied-naval-shipbuilding.do',date:'2026-04-27',label:'Hanwha Ocean·Leidos 공식 발표'},  hanwhaOceanBabcock2026:{url:'https://www.hanwha.com/newsroom/news/press-releases/hanwha-babcock-partnership-to-support-jobs-and-long-term-industrial-benefits-in-canada.do',date:'2026-01-26',label:'Hanwha Ocean·Babcock 공식 발표'},
   hanwhaAeroPnw2018:{url:'https://www.hanwha.com/newsroom/news/feature-stories/hanwha-aerospace-trusted-partner-of-the-worlds-top-aircraft-engine-manufacturers.do',date:'2018-11-07',label:'Hanwha Aerospace·Pratt & Whitney 공식 자료'},
   hanwhaAeroGe2018:{url:'https://www.hanwha.com/newsroom/news/feature-stories/hanwha-aerospace-trusted-partner-of-the-worlds-top-aircraft-engine-manufacturers.do',date:'2018-11-07',label:'Hanwha Aerospace·GE 공식 자료'},
-  hanwhaAeroRolls2021:{url:'https://www.hanwha.com/newsroom/news/press-releases/hanwha-aerospace-recognized-as-trusted-partner-by-rolls-royce.do',date:'2022-06-09',label:'Hanwha Aerospace·Rolls-Royce 공식 발표'},  hanwhaAeroBae2024:{url:'https://www.hanwha.com/profile/en/hanwha_businesses/aerospace-mechatronics.html',date:'2024',label:'Hanwha 공식 사업자료'}
+  hanwhaAeroRolls2021:{url:'https://www.hanwha.com/newsroom/news/press-releases/hanwha-aerospace-recognized-as-trusted-partner-by-rolls-royce.do',date:'2022-06-09',label:'Hanwha Aerospace·Rolls-Royce 공식 발표'},
+  hanwhaAeroBae2024:{url:'https://www.hanwha.com/profile/en/hanwha_businesses/aerospace-mechatronics.html',date:'2024',label:'Hanwha 공식 사업자료'}
 });
 {
   const norm=v=>String(v||'').toLowerCase().replace(/[^a-z0-9가-힣]+/g,'');
@@ -7185,11 +7189,11 @@ Object.assign(ATLAS_DATA.sources, {
   v34woodsideAws:{url:'https://aws.amazon.com/blogs/industries/woodside-energy-accelerates-robotics-innovation-with-aws/',date:'official AWS industry story',label:'Woodside·AWS 공식 사례'},
   v34xeroAws:{url:'https://aws.amazon.com/solutions/case-studies/xero-ecs-case-study/',date:'official case study',label:'Xero·AWS 공식 고객사례'},
   v34reaAws:{url:'https://aws.amazon.com/blogs/big-data/how-rea-group-approaches-amazon-msk-cluster-capacity-planning/',date:'official AWS case study',label:'REA Group·AWS 공식 사례'},
-  v34novartisMicrosoft:{url:'https://news.microsoft.com/source/2019/10/01/novartis-and-microsoft-announce-collaboration-to-transform-medicine-with-artificial-intelligence/',date:'2019-10-01',label:'Novartis·Microsoft 공식 발표'},
-  v34zurichMicrosoft:{url:'https://www.microsoft.com/en/customers/story/1792347226516734147-zurich-insurance-group-power-apps-insurance-en-switzerland',date:'official customer story',label:'Zurich Insurance·Microsoft 공식 고객사례'},
+  v34novartisMicrosoft:{url:'https://news.microsoft.com/source/2019/10/01/novartis-and-microsoft-announce-collaboration-to-transform-medicine-with-artificial-intelligence/',date:'2019-10-01',label:'Novartis·Microsoft 공식 발표'},  v34zurichMicrosoft:{url:'https://www.microsoft.com/en/customers/story/1792347226516734147-zurich-insurance-group-power-apps-insurance-en-switzerland',date:'official customer story',label:'Zurich Insurance·Microsoft 공식 고객사례'},
   v34abbMicrosoft:{url:'https://partner.microsoft.com/en-gb/case-studies/abb',date:'official partner story',label:'ABB·Microsoft 공식 사례'},
   v34holcimAws:{url:'https://aws.amazon.com/solutions/case-studies/holcim-case-study/',date:'official case study',label:'Holcim·AWS 공식 고객사례'},
-  v34ferrovialMicrosoft:{url:'https://www.microsoft.com/en/customers/story/1516468359647513304-ferrovial-civil-engineering-infrastructure-spain-microsoft-edge',date:'official customer story',label:'Ferrovial·Microsoft 공식 고객사례'},  v34mapfreMicrosoft:{url:'https://www.mapfre.com/comunicacion/negocio-espana-comunicacion/mapfre-ofrecera-productos-aseguradores-a-los-empleados-de-microsoft-espana-en-condiciones-especiales/',date:'official MAPFRE release',label:'MAPFRE·Microsoft 공식 제휴'},
+  v34ferrovialMicrosoft:{url:'https://www.microsoft.com/en/customers/story/1516468359647513304-ferrovial-civil-engineering-infrastructure-spain-microsoft-edge',date:'official customer story',label:'Ferrovial·Microsoft 공식 고객사례'},
+  v34mapfreMicrosoft:{url:'https://www.mapfre.com/comunicacion/negocio-espana-comunicacion/mapfre-ofrecera-productos-aseguradores-a-los-empleados-de-microsoft-espana-en-condiciones-especiales/',date:'official MAPFRE release',label:'MAPFRE·Microsoft 공식 제휴'},
   v34chinaMobileAws:{url:'https://aws.amazon.com/directconnect/partners/',date:'official partner directory',label:'China Mobile·AWS Direct Connect 공식 파트너'},
   v34chinaTelecomAws:{url:'https://aws.amazon.com/directconnect/partners/',date:'official partner directory',label:'China Telecom·AWS Direct Connect 공식 파트너'},
   v34tencentNvidia:{url:'https://nvidianews.nvidia.com/news/tencent-cloud-adopts-nvidia-tesla-for-ai-cloud-computing',date:'official NVIDIA release',label:'Tencent Cloud·NVIDIA 공식 발표'},
@@ -7984,11 +7988,11 @@ function activateCompany(id){
    layer.append('circle').attr('cx',b[0]).attr('cy',b[1]).attr('r',5).attr('stroke',color).attr('stroke-width',1.2).attr('fill','#0b1420');
    const names=relations.slice(0,2).map(r=>{const peer=r.targetCompany&&COMPANY_BY_ID.get(r.targetCompany);return peer?companyNameKo(peer):(r.label||'').split('·')[0].trim();}).filter(Boolean).join(' / ');if(names)layer.append('text').attr('x',b[0]+7).attr('y',b[1]-7).attr('class','connection-company-label').text(names);
    mapSvg.selectAll('.map-country').filter(f=>featureId(f)===dest.id).classed('linked-country',true);
-   mapSvg.selectAll('.dot').filter(x=>x.id===dest.id).attr('display',null);
- }
+   mapSvg.selectAll('.dot').filter(x=>x.id===dest.id).attr('display',null); }
  const caption=$('#link-caption');caption.hidden=links.size===0;caption.textContent=origin.name+' → '+Array.from(links.keys(),id=>COUNTRY_BY_ID.get(id)?.name).filter(Boolean).join(' · ');
  const detail=$('#company-detail'),news=c.news,annual=c.annual;
- const quoteMeta=c.quote&&Number.isFinite(c.quote.price)?`<div class="quote-detail">최근 종가 ${Number(c.quote.price).toLocaleString('ko-KR',{maximumFractionDigits:4})}${Number.isFinite(c.quote.changePercent)?` · ${formatPercent(c.quote.changePercent)}`:''}${c.quote.previousAsOf?` · 직전 거래일 ${escapeHtml(c.quote.previousAsOf)}`:''}${c.quote.asOf?`<br>기준일 ${escapeHtml(c.quote.asOf)}`:''}${c.quote.source?` · ${escapeHtml(c.quote.source)}`:''}</div>`:''; const listingStatus=c.listed===false?'비상장 기업':(c.tickerVerified===false?'상장정보 검증 중':'상장기업');
+ const quoteMeta=c.quote&&Number.isFinite(c.quote.price)?`<div class="quote-detail">최근 종가 ${Number(c.quote.price).toLocaleString('ko-KR',{maximumFractionDigits:4})}${Number.isFinite(c.quote.changePercent)?` · ${formatPercent(c.quote.changePercent)}`:''}${c.quote.previousAsOf?` · 직전 거래일 ${escapeHtml(c.quote.previousAsOf)}`:''}${c.quote.asOf?`<br>기준일 ${escapeHtml(c.quote.asOf)}`:''}${c.quote.source?` · ${escapeHtml(c.quote.source)}`:''}</div>`:'';
+ const listingStatus=c.listed===false?'비상장 기업':(c.tickerVerified===false?'상장정보 검증 중':'상장기업');
  detail.innerHTML=`<div class="company-detail-title"><strong>${companyNameHtml(c)}</strong><small>${c.listed===false?escapeHtml(c.exchange||'비상장'):(c.tickerVerified===false?'상장정보 검증 중':escapeHtml(c.ticker)+(c.exchange?' · '+escapeHtml(c.exchange):''))}</small></div><p class="data-kind">${escapeHtml(c.sector)} · ${escapeHtml(listingStatus)}</p>${quoteMeta}${annual?`<div class="filing-detail">매출 ${annual.value.toLocaleString('ko-KR',{maximumFractionDigits:3})} ${annual.unit} · ${annual.period}${Number.isFinite(annualGrowth(c))?` · ${formatPercent(annualGrowth(c))}`:''}<br>${sourceLink(annual.source,'공시 수치 출처')}${annual.priorSource?' · '+sourceLink(annual.priorSource,'전년 공시'):''}</div>`:''}<div class="company-news"><small>${news?escapeHtml(news.kind)+' · '+escapeHtml(SOURCES[news.source].date):'관련 뉴스'}</small><p>${news?escapeHtml(news.summary):'검증한 기사 요약을 아직 연결하지 않았습니다.'}</p>${news?sourceLink(news.source,'원문 읽기'):`<a href="${newsSearch(companyNameText(c))}" target="_blank" rel="noopener noreferrer">뉴스 검색 ↗</a>`}</div>${topLinks.length?`<ul class="relationship-list">${topLinks.map(l=>{const peer=l.targetCompany&&COMPANY_BY_ID.get(l.targetCompany);const evidence=l.source?sourceLink(l.source,'근거'):(l.verified?'':'<em class="peer-note">비교군</em>');return `<li><span>${escapeHtml(COUNTRY_BY_ID.get(l.target)?.name)}</span> ${escapeHtml(peer?companyNameText(peer):l.label)} <small>${escapeHtml(l.kind)}</small> ${evidence}</li>`;}).join('')}</ul>`:'<p class="muted">해외 연결을 아직 등록하지 않았습니다.</p>'}<p class="causality-note">관계선은 공급·협력·경쟁·동일 업종 관계를 구분해 보여줍니다. 비교군은 실제 계약관계를 뜻하지 않습니다.</p>`;
 }
 function clearCompany(preservePin=false){
@@ -8116,9 +8120,14 @@ const liveEscape=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 function periodLabel(v){return /^\d{8}$/.test(v)?v.slice(0,4)+'-'+v.slice(4,6)+'-'+v.slice(6):/^\d{6}$/.test(v)?v.slice(0,4)+'-'+v.slice(4):v;}
 function liveRow(name){return liveData.markets?.items?.find(r=>r.name===name)||liveData.ecos?.items?.find(r=>r.name===name)||liveData.korea?.items?.find(r=>r.name===name);}
 function liveCard(r){if(!r)return '';const value=Number(r.value).toLocaleString('ko-KR',{maximumFractionDigits:3});return card(liveEscape(r.name),value,liveEscape(r.unit)+' · 기준 '+liveEscape(periodLabel(r.period))+(Number.isFinite(r.yoy)?' · 전년 동월 대비 '+r.yoy.toFixed(2)+'%':''),r.source,'공식 출처 ↗');}
-function liveStatus(names){return `<div class="notice live-status" role="status">${names.map(n=>{const d=liveData[n];const status=!d?'조회 중':d.status==='ok'?'수신 완료':d.status==='stale'?'갱신 실패 · 이전 수신값':'연결 대기';return `<span>${liveNames[n]}: ${status}${d?.fetchedAt?' · 수신 '+new Date(d.fetchedAt).toLocaleString('ko-KR'):''}</span>`;}).join('')}<small>원천 발표 주기에 따른 최신 공개값입니다. 장중 실시간 시세가 아닙니다. 접속 즉시 조회하고, 열린 동안 1시간마다 다시 확인합니다.</small></div>`;}
+function liveStatus(names){return `<div class="notice live-status" role="status">${names.map(n=>{const d=liveData[n];const status=!d?'조회 중':d.status==='ok'?'수신 완료':d.status==='stale'?'이전 수신값 사용':'미연결';return `<span>${liveNames[n]} · ${status}${d?.fetchedAt?' · '+new Date(d.fetchedAt).toLocaleString('ko-KR'):''}</span>`;}).join('')}<small>원천 발표 주기에 따른 최신 공개값입니다. 장중 실시간 시세가 아닙니다.</small></div>`;}
 function liveGrid(rows){return `<div class="data-grid">${rows.filter(Boolean).map(liveCard).join('')}</div>`;}
-function indicatorCards(){const names=['코스피지수','코스닥지수','한국은행 기준금리','소비자물가지수','생산자물가지수','경제성장률(실질, 계절조정 전기대비)','실업률'];return liveStatus(['markets','korea','ecos','bls','energy','eia','worldbank','nyfed','fred','krx'])+liveGrid([...names.map(liveRow),...(liveData.korea?.items||[]),...(liveData.bls?.items||[]),...(liveData.eia?.status==='ok'?liveData.eia?.items||[]:liveData.energy?.items||[]),...(liveData.nyfed?.items||[]),...(liveData.fred?.items||[]),...(liveData.worldbank?.items||[])])+`<div class="notice">한국 기준금리·원/달러·한국 10년 국채·실업률은 공개 원천의 무키 경로를 추가했습니다. WTI·Brent도 FRED 대체 경로를 사용합니다. ECOS·EIA는 키가 있으면 더 상세한 국내·에너지 지표를 보강합니다. KOSPI·KOSDAQ은 공개 시장시세 보조 경로를 연결하고 KRX 공식 API는 승인 시 추가 검증 경로로 사용합니다.</div>`;}
+function indicatorMini(r){if(!r)return '';const n=Number(r.value),value=Number.isFinite(n)?n.toLocaleString('ko-KR',{maximumFractionDigits:3}):'—';const unit=r.unit||'';return `<div class="indicator-mini"><span>${liveEscape(r.name)}</span><b>${liveEscape(value+(unit==='%'?'%':unit?` ${unit}`:''))}</b><small>${liveEscape(periodLabel(r.period)||'기준일 확인')} · ${r.source?`<a href="${liveEscape(r.source)}" target="_blank" rel="noopener noreferrer">원천 ↗</a>`:'공개자료'}</small></div>`;}
+function indicatorCards(){
+  const merged=[...(liveData.markets?.items||[]),...(liveData.korea?.items||[]),...(liveData.bls?.items||[]),...(liveData.eia?.status==='ok'?liveData.eia?.items||[]:liveData.energy?.items||[]),...(liveData.nyfed?.items||[]),...(liveData.fred?.items||[]),...(liveData.worldbank?.items||[]),...(liveData.ecos?.items||[])];
+  const seen=new Set(),rows=[];for(const r of merged){const k=r?.name||r?.id;if(!k||seen.has(k))continue;seen.add(k);rows.push(r);}
+  return `<section class="indicator-section"><h3>주요 지표</h3><div class="indicator-compact">${rows.map(indicatorMini).join('')}</div><p class="indicator-note">지표마다 발표 주기와 기준일이 다릅니다. 각 칸의 기준일과 원천 링크를 함께 확인해 주세요.</p></section><details class="indicator-meta"><summary>데이터 연결 상태 · 상세 보기</summary>${liveStatus(['markets','korea','ecos','bls','energy','eia','worldbank','nyfed','fred','krx'])}</details>`;
+}
 function renderLiveCategory(category){if(!['물가','금리','유가','환율','주요경제지표'].includes(category))return false;const panel=$('#category-content');if(category==='주요경제지표'){panel.innerHTML=indicatorCards();return true;}if(category==='물가'){panel.innerHTML=liveStatus(['ecos','bls'])+liveGrid(['소비자물가지수','생산자물가지수'].map(liveRow).concat(liveData.bls?.items||[]))+`<div class="data-grid">${card('다음 CPI 발표','공식 일정','API의 지수 기준월과 다음 발표일은 다릅니다.','https://www.bls.gov/schedule/news_release/cpi.htm')}${card('다음 PPI 발표','공식 일정','발표 예정일은 BLS 공식 달력에서 확인합니다.','https://www.bls.gov/schedule/news_release/ppi.htm')}</div>`;return true;}if(category==='금리'){panel.innerHTML=liveStatus(['korea','ecos','nyfed','fred'])+liveGrid(['한국은행 기준금리','한국 국고채 10년','국고채수익률(3년)','CD수익률(91일)'].map(liveRow).concat(liveData.nyfed?.items||[],liveData.fred?.items||[]))+`<div class="notice">EFFR·SOFR는 New York Fed의 직전 영업일 공식 기준금리, 미국 국채 10년은 FRED의 최신 공개 관측값입니다.</div>`;return true;}if(category==='유가'){panel.innerHTML=liveStatus(['energy','eia','ecos'])+liveGrid([...(liveData.eia?.status==='ok'?liveData.eia?.items||[]:liveData.energy?.items||[]),liveRow('Dubai유(현물)')])+`<div class="notice">WTI·Brent는 EIA 일별 현물 가격, Dubai는 ECOS가 제공한 월별 값입니다. 기준일·집계 주기가 달라 직접 같은 날의 가격처럼 비교하면 안 됩니다. Oman 개별 가격은 미연동입니다.</div><a href="${newsSearch('유가 WTI Brent Dubai')}" target="_blank" rel="noopener noreferrer">관련 뉴스 검색 ↗</a>`;return true;}if(category==='환율'){panel.innerHTML=liveStatus(['korea','ecos'])+liveGrid(['원/달러 환율(종가)','원/엔(100엔) 환율(매매기준율)','원/유로 환율(매매기준율)','원/위안 환율(종가)'].map(liveRow))+`<div class="notice">위 값은 ECOS 종가·매매기준율입니다. 아래 Frankfurter 일별 기준환율과 산출 시점·방식이 다릅니다.</div><div id="fx-status"></div><div id="fx-cards" class="data-grid"></div><button id="refresh-fx">기준환율 재조회</button>`;renderFx();$('#refresh-fx').onclick=refreshFx;return true;}return false;}
 function stripRow(name,label,opts={}){
   const r=liveRow(name);
@@ -8149,15 +8158,15 @@ function updateLiveView(){
       stripRow('실업률','한국 실업률',{max:2,suffix:'%',source:'FRED'}),
       externalStripRow(liveData.eia?.status==='ok'?'eia':'energy',0,'WTI',{max:2,prefix:'$',source:liveData.eia?.status==='ok'?'EIA':'FRED'}),
       externalStripRow(liveData.eia?.status==='ok'?'eia':'energy',1,'Brent',{max:2,prefix:'$',source:liveData.eia?.status==='ok'?'EIA':'FRED'}),
-      externalStripRow('bls',0,'미국 CPI YoY',{useYoy:true,source:'BLS'}),
-      externalStripRow('bls',1,'미국 PPI YoY',{useYoy:true,source:'BLS'}),
+      externalStripRow('bls',0,'미국 CPI YoY',{max:2,suffix:'%',source:'BLS'}),
+      externalStripRow('bls',1,'미국 PPI YoY',{max:2,suffix:'%',source:'BLS'}),
       externalStripRow('nyfed',0,'미국 EFFR',{max:3,suffix:'%',source:'NYFED'}),
       externalStripRow('nyfed',1,'미국 SOFR',{max:3,suffix:'%',source:'NYFED'}),
       externalStripRow('fred',0,'미국채 10년',{max:3,suffix:'%',source:'FRED'}),
       externalStripRow('worldbank',0,'한국 GDP 성장률',{max:2,suffix:'%',source:'WB'}),
       externalStripRow('worldbank',2,'세계 GDP 성장률',{max:2,suffix:'%',source:'WB'})
     ];    const ready=metrics.filter(m=>m.value!=='—').length;
-    strip.innerHTML=`<div class="market-strip-head"><span class="pulse-dot"></span><div><b>MARKET PULSE</b><small>공식 통계 · ${ready}/${metrics.length} 수신</small></div></div><div class="market-strip-track">${metrics.map(m=>`<div class="market-chip ${m.tone||''}"><span>${liveEscape(m.label)}</span><b>${liveEscape(m.value)}</b><small>${liveEscape(m.source)} · ${liveEscape(m.period)}</small></div>`).join('')}</div>`;
+    const chips=metrics.map(m=>`<div class="market-chip ${m.tone||''}"><span>${liveEscape(m.label)}</span><b>${liveEscape(m.value)}</b><small>${liveEscape(m.source)} · ${liveEscape(m.period)}</small></div>`).join('');strip.innerHTML=`<div class="market-strip-head"><span class="pulse-dot"></span><div><b>MARKET PULSE</b><small>공식 통계 · ${ready}/${metrics.length} 수신</small></div></div><div class="market-strip-track"><div class="market-ticker">${chips}${chips}</div></div>`;
   }
   if(state.route==='indicators')$('#content').innerHTML=title('ECONOMIC INDICATORS','공식 경제지표','기관별 공개 데이터를 기준일과 함께 확인하세요.')+indicatorCards();
 
